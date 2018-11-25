@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:43-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<h6 class="heading"><span class="type">Paragraph</span></h6>
+<p>We also want to show that \(\| A \|_\infty \geq \max_i \| \widehat a_i \|_1\text{.}\) Let \(k \) be such that \(\max_i \| \widehat a_i \|_1 = \| \widehat
+a_k\|_1 \) and pick \(y = 
+\left( \begin{array}{c}
+\psi_0 \\
+\psi_1 \\
+\vdots \\
+\psi_{n-1}
+\end{array}
+\right) \) so that \(\widehat a_k^T y  = 
+\vert \alpha_{k,0} \vert + \vert \alpha_{k,1} \vert + \cdots + \vert
+\alpha_{k,n-1} \vert = \| \widehat a_k \|_1 \text{.}\) (This is a matter of picking \(\psi_i \) so that \(\vert \psi_i \vert =1\) and \(\psi_i \alpha_{k,i} = \vert \alpha_{k,i} \vert \text{.}\)) Then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{rcl}
+\| A \|_\infty = \max_{\|x\|_1=1} \| A x\|_\infty
+\amp=\amp
+\max_{\|x\|_1=1} 
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right) x
+\right\|_\infty 
+\geq
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right)  y
+\right\|_\infty \\
+\amp
+= \amp
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T y\\ \hline
+\widehat a_1^T y\\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T y
+\end{array} \right)  
+\right\|_\infty
+\geq \vert \widehat a_k^T y \vert 
+=
+\widehat a_k^T y 
+=\| \widehat a_k \|_1. =  
+\max_i \| \widehat a_i \|_1
+\end{array}
+\end{equation*}
+</div>
+<span class="incontext"><a href="section-norms-matrix-norms.html#p-125">in-context</a></span>
+</body>
+</html>

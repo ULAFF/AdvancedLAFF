@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:43-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body><div class="solution">
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{l}
+\| A B \|_F^2 \\
+~~~ = ~~~~ \lt \gt \\
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^H \\
+\widehat a_1^H \\
+\vdots \\
+\widehat a_{m-1}^H 
+\end{array}
+\right)
+\left( \begin{array}{c | c | c | c}
+b_0 \amp  b_1 \amp  \cdots \amp  b_{n-1}
+\end{array}
+\right)
+\right\|_F^2 \\
+~~~ = ~~~~ \lt \gt \\
+\left\|  
+\left( \begin{array}{c | c | c | c}
+\widehat a_0^H b_0 \amp   \widehat a_0^H b_1 \amp   \cdots \amp  \widehat a_0^H
+b_{n-1}  \\ \hline
+\widehat a_0^H b_0 \amp   \widehat a_0^H b_1 \amp   \cdots \amp  \widehat a_0^H
+b_{n-1}  \\ \hline
+\vdots \amp  \vdots \amp  \amp  \vdots \\ \hline
+\widehat a_{m-1}^H b_0 \amp   \widehat a_{m-1}^H b_1 \amp   \cdots
+\amp  \widehat a_{m-1}^H
+b_{n-1}  
+\end{array}
+\right)
+\right\|_F^2  \\
+~~~ = ~~~~ \lt \gt \\
+\sum_i \sum_j \vert \widehat a_i^H b_j \vert^2 \\
+\amp \leq\amp  
+\sum_i \sum_j  \| \widehat a_i \|_2^2 \| b_j \|_2^2 ~~~~~\mbox{(Cauchy-Schwartz)}\\
+\amp  = \amp 
+\left( \sum_i  \| \widehat a_i \|_2^2 \right) \left( \sum_j \| b_j
+\|^2  \right)
+\end{array}
+\end{equation*}
+</div>
+<p>}</p>
+</div></body>
+</html>

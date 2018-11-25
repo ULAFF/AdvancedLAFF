@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:43-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<h6 class="heading"><span class="type">Paragraph</span></h6>
+<p>This is summarized as follows:</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{r c l l}
+A x \amp = \amp  b \amp  {\rm exact~equation} \\
+A ( x + \delta\!x ) \amp  = \amp   b + \delta\!b ~~~~~~~ \amp  {\rm Perturbed~equation} \\
+\end{array}
+\end{equation*}
+</div>
+<p>We would like to determine a formula, \(\kappa( A, b, \delta\!b ) \text{,}\) that gives us a bound on how much a relative error in \(b \) is potentially amplified into an error in the solution \(x \text{:}\)</p>
+<div class="displaymath">
+\begin{equation*}
+\frac{\| \delta\!x \|}{\| x \|}
+\leq 
+\kappa( A, b, \delta\!b )
+\frac{\| \delta\!b \|}{\| b \|}.
+\end{equation*}
+</div>
+<p>We assume that \(A \) has an inverse since otherwise, there may be no solution or there may be an infinite number of solutions. To find an expression for \(\kappa( A, b, \delta\!b ) \text{,}\) we notice that</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{r c l}  
+A x + A \delta\!x  \amp  = \amp   b + \delta\!b  \\   
+A x \phantom{+ A \delta\!x } \amp  = \amp  b \hspace{0.25in} -\\ \hline 
+A \delta\!x  \amp  = \amp   \phantom{b} \phantom{+} \delta\!b
+\end{array}
+\end{equation*}
+</div>
+<p>and from this</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{r c l}
+A x \amp  = \amp  b \\
+\delta\!x  \amp  = \amp   A^{-1} \delta\!b.
+\end{array}
+\end{equation*}
+</div>
+<p>If we now use a vector norm \(\| \cdot \| \) and induced matrix norm \(\| \cdot \| \text{,}\) then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{r c l} 
+\| b \| \amp  = \amp  \| A x \| \leq \| A \| \| x \| \\
+\| \delta\!x \| \amp  = \amp  \| A^{-1} \delta\!b \| \leq \| A^{-1} \| \|
+\delta\!b \| 
+\end{array}
+\end{equation*}
+</div>
+<p>since induced matrix norms are sub-multiplicative.</p>
+<span class="incontext"><a href="norms-application.html#p-161">in-context</a></span>
+</body>
+</html>

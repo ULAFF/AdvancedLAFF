@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:41-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="solution">
+<h6 class="heading">
+<span class="type">Solution</span> <span class="codenumber">2.3.8.1</span>
+</h6>
+<p>We show that the three conditions are met:</p>
+<p>Let \(x, y \in \C^n \) and \(\alpha \in \C \) be arbitrarily chosen.  Then</p>
+<ul class="disc">
+<li>
+<p>\(x \neq 0 \Rightarrow \| x \|_1 &gt; 0 \) (\(\| \cdot \|_1 \) is positive definite):</p>
+<p>Notice that \(x \neq 0 \) means that at least one of its components is nonzero. Let's assume that \(\chi_j \neq 0 \text{.}\)  Then</p>
+<div class="displaymath">
+\begin{equation*}
+\| x \|_1 = \vert \chi_0 \vert + \cdots + \vert \chi_{n-1} \vert
+\geq \vert \chi_j \vert  &gt; 0 .
+\end{equation*}
+</div>
+</li>
+<li>
+<p>\(\| \alpha x \|_1 = \vert \alpha \vert \| x \|_1 \) (\(\| \cdot \|_1 \) is homogeneous):</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{lcl}
+\| \alpha x \|_1 \amp =\amp  
+\vert \alpha \chi_0 \vert + \cdots + \vert \alpha
+\chi_{n-1} \vert  \\
+\amp =\amp  
+\vert \alpha \vert \vert \chi_0 \vert + \cdots +
+\vert \alpha \vert \vert \chi_{n-1} \vert \\
+\amp =\amp 
+\vert \alpha \vert ( \vert \chi_0 \vert + \cdots + \vert \chi_{n-1}
+\vert )  \\
+\amp =\amp  \vert \alpha \vert ( \vert \chi_0 \vert + \cdots
++ \vert \chi_{n-1} 	  \vert ) \\
+\amp =\amp  \vert \alpha \vert \| x \|_1.
+\end{array}
+\end{equation*}
+</div>
+</li>
+<li>
+<p>\(\| x + y  \|_1 \leq \| x \|_1 + \| y \|_1 \) (\(\| \cdot \|_1 \) obeys the triangle inequality):</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{lcl}
+\| x + y \|_1 \amp =\amp  
+\vert \chi_0 + \psi_0 \vert 
++
+\vert \chi_1 + \psi_1 \vert 
++
+\cdots
++
+\vert \chi_{n-1} + \psi_{n-1} \vert  \\
+\amp \leq\amp 
+\vert \chi_0 \vert + \vert \psi_0 \vert 
++
+\vert \chi_1 \vert + \vert \psi_1 \vert 
++
+\cdots
++
+\vert \chi_{n-1} \vert + \vert \psi_{n-1} \vert  \\
+\amp =\amp 
+\vert \chi_0 \vert 
++
+\vert \chi_1 \vert 
++
+\cdots
++
+\vert \chi_{n-1} \vert 
++
+\vert \psi_0 \vert 
++
+\vert \psi_1 \vert 
++
+\cdots
++
+\vert \psi_{n-1} \vert  \\
+\amp = \amp  \| x \|_1 + \| y \|_1.
+\end{array}
+\end{equation*}
+</div>
+</li>
+</ul>
+</div>
+<span class="incontext"><a href="section-norms-vector-norms.html#solution-2">in-context</a></span>
+</body>
+</html>

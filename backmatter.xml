@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--********************************************************************
+Copyright 2018, 2019  Robert van de Geijn and Margaret Myers
+
+This file is part of LAFF-On Numerical Linear Algebra XML.
+*********************************************************************-->
+<!-- This file has been modified from  sample-book.xml  -->
+<!-- by Robert A. Beezer -->
+<!-- which is part of the mathbook distribution     -->
+
+<backmatter xml:id="backmatter" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Back Matter</title> <!-- mostly for HTML sectioning -->
+
+    <appendix>
+    </appendix>
+
+    <xi:include href="./gfdl-mathbook.xml" />           <!-- GFDL License text -->
+
+    <!-- Index follows appendices, preceded only colophon -->
+    <index>
+
+        <index-list />
+    </index>
+
+    <colophon xml:id="back-colophon">
+        <p>This book was authored in MathBook XML.</p>
+    </colophon>
+
+</backmatter>

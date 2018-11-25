@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:42-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<article class="hiddenproof"><h6 class="heading"><span class="type">Proof</span></h6>
+<p>The proof depends on a result from real analysis (sometimes called "advanced calculus") that states that \(\sup_{x \in S} f( x ) \) is attained for some vector \(x \in S \) as long as \(f \) is continuous and \(S \) is a compact set. The set of vectors that satisfied \(x \in \C^n \) and \(\| x \|_\nu = 1 \) is a compact set. Since real analysis is not a prerequisite for this course, the reader may have to take this on faith!  From real analysis we also learn that if the supremum is attained by an element in \(S \text{,}\) then \(\sup_{x \in S} f( x ) = \max_{x \in S} f( x ) \text{.}\)</p>
+<p>We will prove that there exists a \(\tau \) such that for all \(x \in \C^n \)</p>
+<div class="displaymath">
+\begin{equation*}
+\vert \vert \vert x \vert \vert \vert 
+\leq \tau \| x \|
+\end{equation*}
+</div>
+<p>leaving the rest of the proof to the reader.</p>
+<p>Let \(x \in \C^n \) be an arbitary vector.  W.l.o.g. assume that \(x 
+\neq 0 \text{.}\) Then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{l}
+\vert \vert \vert x \vert \vert \vert \\
+~~~ = ~~~~ \lt {\rm algebra} \gt \\
+\frac{\vert \vert \vert x \vert \vert \vert}{\| x \|} \| x 
+\| \\
+~~~ \le ~~~~ \lt  {\rm algebra} \gt \\ 
+\left( \sup_{z \neq 0} \frac{\vert \vert \vert z \vert \vert 
+\vert}{\| z \|} \right) \| x \| \\
+~~~ = ~~~~ \lt  {\rm homogenuity} \gt \\
+\left( \sup_{z \neq 0} \vert \vert \vert \frac{z}{\| z \|} \vert \vert 
+\vert \right) \| x \| \\	  
+~~~ = ~~~~ \lt  {\rm change~of~variables:~} y = z / \| z \| \gt \\
+\left( \sup_{\| y \| = 1} \vert \vert \vert y \vert \vpert 
+\vert \right) \| x \| \\
+~~~ = ~~~~ \lt {\rm the~set~}\| y \| = 1 {\rm ~is~compact} \gt \\
+\left( \max_{\| y \| = 1} \vert \vert \vert y \vert \vert 
+\vert\right) \| x \|
+\end{array}
+\end{equation*}
+</div>
+<p>The desired \(\tau  \) can now be chosen to equal \(\max_{\| y \| = 1} \vert \vert \vert y \vert \vert 
+\vert \text{.}\)</p></article><span class="incontext"><a href="section-norms-vector-norms.html#proof-3">in-context</a></span>
+</body>
+</html>

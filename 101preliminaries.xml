@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--********************************************************************
+Copyright 2018, 2019  Robert van de Geijn and Margaret Myers 
+
+This file is part of LAFF-On Numerical Linear Algebra XML. 
+*********************************************************************-->
+<!-- This file has been modified from  sample-book.xml  -->
+<!-- by Robert A. Beezer -->
+<!-- which is part of the mathbook distribution     -->
+
+<chapter xml:id="preliminaries" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<title>Preliminaries</title>
+
+<introduction>
+  <p>
+
+
+
+
+	</p>
+        <p>A certain amount of mathematical maturity is necessary to find and study applications of abstract algebra.  A basic knowledge of set theory, mathematical induction, equivalence relations, and matrices is a must.  Even more important is the ability to read and understand mathematical proofs.  In this chapter we will outline the background needed for a course in abstract algebra.</p>
+    </introduction>
+
+<section xml:id="section-note-on-proofs">
+        <title>A Short Note on Proofs</title>
+
+        <introduction>
+
+          <p>Abstract mathematics is different from other sciences. In laboratory sciences such as chemistry and physics, scientists perform experiments to discover new principles and verify theories.  Although mathematics is often motivated by physical experimentation or by computer simulations, it is made rigorous through the use of logical arguments.  In studying abstract mathematics, we take what is called an  axiomatic approach; that is, we take a collection of objects <m>\mathcal S</m> and assume some rules about their structure.  These rules are called <term>axioms</term>.  Using the axioms for <m>\mathcal S</m>, we wish to derive other information about <m>\mathcal S</m> by using logical arguments.  We require that our axioms be consistent; that is, they should not contradict one another.  We also demand that there not be too many axioms. If a system of axioms is too restrictive,  there will be few examples of the mathematical structure.</p>
+	</introduction>
+</section>
+
+</chapter>

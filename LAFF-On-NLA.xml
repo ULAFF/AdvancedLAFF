@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--********************************************************************
+Copyright 2018, 2019  Robert van de Geijn and Margaret Myers 
+
+This file is part of LAFF-On Numerical Linear Algebra XML. 
+*********************************************************************-->
+<!-- This file has been modified from  sample-book.xml  -->
+<!-- by Robert A. Beezer -->
+<!-- which is part of the mathbook distribution     -->
+<mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<!-- <mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="fr-FR"> -->
+
+    <xi:include href="./bookinfo.xml" /> <!-- ISBN, website, other metadata -->
+    
+    <book xml:id="Advanced-LAFF-Part-I">
+        <title>Advanced Linear Algebra: Foundations to Frontiers Part I</title>
+        <subtitle> </subtitle>
+
+        <xi:include href="./frontmatter.xml" />                 <!-- Title Page, Preface, etc. -->
+
+        <!-- Parts are optional, included here for testing            -->
+        <!-- In "bookinfo.xml" set to "structural" for maximum effect -->
+
+<!--        <part xml:id="part-orthogonality">
+            <title>Orthogonality</title> -->
+
+            <xi:include href="./101preliminaries.xml" />         <!-- Preliminaries -->
+            <xi:include href="./102norms.xml" />                   <!--Vector and Marix Norms  -->
+<!--        </part> -->
+
+        <xi:include href="./backmatter.xml" />                  <!-- GFDL, Hints, Notation -->
+
+    </book>
+
+</mathbook>

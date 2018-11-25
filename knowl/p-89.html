@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:42-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<h6 class="heading"><span class="type">Paragraph</span></h6>
+<p>The answer is to realize that if \(A = \left( \begin{array}{c | c | c
+| c} a_0 \amp a_1 \amp \cdots \amp a_{n-1} \end{array} \right) \) then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{l}
+\| A \|_F \\
+~~~=~~~~ \lt {\rm definition} \gt \\ 
+\sqrt{
+\sum_{i=0}^{m-1} \sum_{j=0}^{n-1} 
+\vert \alpha_{i,j}  \vert^2 
+} \\
+~~~=~~~~ \lt {\rm commutivity~of~addition} \gt \\ 
+\sqrt{
+\sum_{j=0}^{n-1} \sum_{i=0}^{m-1} 
+\vert \alpha_{i,j}  \vert^2 
+} \\
+~~~=~~~~ \lt {\rm definition~of~vector~2-norm} \gt \\ 
+\sqrt{
+\sum_{j=0}^{n-1} \| a_j \|_2^2 
+} \\
+~~~=~~~~ \lt {\rm definition~of~vector~2-norm} \gt \\ 
+\sqrt{
+\left\|
+\left( \begin{array}{c}
+a_0 \\ 
+a_1 \\ 
+\vdots \\ 
+a_{n-1}
+\end{array}
+\right)
+\right\|_2^2
+}.
+\end{array}
+\end{equation*}
+</div>
+<p>In other words, it equals the vector 2-norm of the vector that is created by stacking the columns of \(A \) on top of each other. The fact that the Frobenius norm is a norm then comes from realizing this connection and exploiting it.</p>
+<span class="incontext"><a href="section-norms-matrix-norms.html#p-89">in-context</a></span>
+</body>
+</html>

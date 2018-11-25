@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:43-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body><article class="hiddenproof"><p>The proof again build on the fact that the supremum over a compact set is attached and can be replaced by the maximum.</p>
+<p>We will prove that there exists a \(\tau \) such that for all \(A \in \C^{m \times n} \)</p>
+<div class="displaymath">
+\begin{equation*}
+\vert \vert \vert A \vert \vert \vert 
+\leq \tau \| A \|
+\end{equation*}
+</div>
+<p>leaving the rest of the proof to the reader.</p>
+<p>Let \(A \in \C^{m \times n} \) be an arbitary matrix.  W.l.o.g. assume that \(A 
+\neq 0 \) (the zero matrix). Then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{l}
+\vert \vert \vert A \vert \vert \vert \\
+~~~ = ~~~~ \lt {\rm algebra} \gt \\
+\frac{\vert \vert \vert A \vert \vert \vert}{\| A \|} \| A 
+\| \\
+~~~ \le ~~~~ \lt  {\rm algebra} \gt \\ 
+\left( \sup_{Z \neq 0} \frac{\vert \vert \vert Z \vert \vert 
+\vert}{\| Z \|} \right) \| A \| \\
+~~~ = ~~~~ \lt  {\rm homogenuity} \gt \\
+\left( \sup_{Z \neq 0} \vert \vert \vert \frac{Z}{\| Z \|} \vert \vert 
+\vert \right) \| A \| \\	  
+~~~ = ~~~~ \lt  {\rm change~of~variables:~} B = Z / \| Z \| \gt \\
+\left( \sup_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+\vert \right) \| A \| \\
+~~~ = ~~~~ \lt {\rm the~set~}\| B \| = 1 {\rm ~is~compact} \gt \\
+\left( \max_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+\vert\right) \| A \|
+\end{array}
+\end{equation*}
+</div>
+<p>The desired \(\tau  \) can now be chosen to equal \(\max_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+\vert \text{.}\)</p></article></body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--**************************************-->
+<!--*    Generated from PreTeXt source   *-->
+<!--*    on 2018-11-24T18:17:42-06:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body><div class="solution">
+<p>Partition \(A = 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right) 
+\text{.}\)  Then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{rcl}
+\| A \|_\infty \amp=\amp \max_{\| x \|_\infty = 1} \| A x \|_\infty 
+=
+\max_{\| x \|_\infty = 1} \left\| 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right) x
+\right\|_\infty 
+=
+\max_{\| x \|_\infty = 1} \left\| 
+\left( \begin{array}{c}
+\widehat a_0^T x \\ \hline
+\widehat a_1^T x \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T x
+\end{array} \right) 
+\right\|_\infty \\
+\amp=\amp
+\max_{\| x \|_\infty = 1} \left(
+\max_i \vert a_i^T x \vert \right) 
+=
+\max_{\| x \|_\infty = 1} 
+\max_i \vert \sum_{p=0}^{n-1} \alpha_{i,p} \chi_p \vert 
+\leq
+\max_{\| x \|_\infty = 1} 
+\max_i \sum_{p=0}^{n-1} \vert \alpha_{i,p} \chi_p \vert \\
+\amp=\amp
+\max_{\| x \|_\infty = 1} 
+\max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert \vert \chi_p \vert
+) 
+\leq
+\max_{\| x \|_\infty = 1} 
+\max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert ( \max_k \vert
+\chi_k \vert )
+) 
+\leq
+\max_{\| x \|_\infty = 1} 
+\max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert \| x \|_\infty ) \\
+\amp=\amp
+\max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert 
+= \| \widehat a_i \|_1
+\end{array}
+\end{equation*}
+</div>
+<p>so that \(\| A \|_\infty \leq \max_i \| \widehat a_i \|_1 \text{.}\)</p>
+<p>We also want to show that \(\| A \|_\infty \geq \max_i \| \widehat a_i \|_1\text{.}\) Let \(k \) be such that \(\max_i \| \widehat a_i \|_1 = \| \widehat
+a_k\|_1 \) and pick \(y = 
+\left( \begin{array}{c}
+\psi_0 \\
+\psi_1 \\
+\vdots \\
+\psi_{n-1}
+\end{array}
+\right) \) so that \(\widehat a_k^T y  = 
+\vert \alpha_{k,0} \vert + \vert \alpha_{k,1} \vert + \cdots + \vert
+\alpha_{k,n-1} \vert = \| \widehat a_k \|_1 \text{.}\) (This is a matter of picking \(\psi_i \) so that \(\vert \psi_i \vert =1\) and \(\psi_i \alpha_{k,i} = \vert \alpha_{k,i} \vert \text{.}\)) Then</p>
+<div class="displaymath">
+\begin{equation*}
+\begin{array}{rcl}
+\| A \|_\infty = \max_{\|x\|_1=1} \| A x\|_\infty
+\amp=\amp
+\max_{\|x\|_1=1} 
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right) x
+\right\|_\infty 
+\geq
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T \\ \hline
+\widehat a_1^T \\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T 
+\end{array} \right)  y
+\right\|_\infty \\
+\amp
+= \amp
+\left\| 
+\left( \begin{array}{c}
+\widehat a_0^T y\\ \hline
+\widehat a_1^T y\\ \hline
+\vdots \\ \hline
+\widehat a_{m-1}^T y
+\end{array} \right)  
+\right\|_\infty
+\geq \vert \widehat a_k^T y \vert 
+=
+\widehat a_k^T y 
+=\| \widehat a_k \|_1. =  
+\max_i \| \widehat a_i \|_1
+\end{array}
+\end{equation*}
+</div>
+</div></body>
+</html>

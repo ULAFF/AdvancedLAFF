@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--********************************************************************
+Copyright 2018, 2019  Robert van de Geijn and Margaret Myers 
+
+This file is part of LAFF-On Numerical Linear Algebra XML. 
+*********************************************************************-->
+<!-- This file has been modified from  sample-book.xml  -->
+<!-- by Robert A. Beezer -->
+<!-- which is part of the mathbook distribution     -->
+
+<chapter xml:id="chapter-norms" xmlns:xi="http://www.w3.org/2001/XInclude">
+  
+  <!-- % TWJ, 2010/03/31 -->
+  <!-- % Chapters now begin with Chapter 1 -->
+  
+  <title>Matrix and Vector Norms</title>
+  
+  
+  <introduction>
+    <p>
+      <todo>Opening paragraph here.</todo>
+      
+      
+    </p>
+    
+  </introduction>
+  
+  <section xml:id="section-norms-opening">
+    <title>Opening</title>
+    
+    
+    <subsection>
+      <title> Launch </title>
+      
+      <p>
+      Description of launch</p>
+      
+    </subsection>
+    
+    <subsection>
+      <title>Overview</title>
+      <p>
+      </p>
+    </subsection>
+    
+    <subsection>
+      <title> What you need to know </title>
+      <p>
+      </p>
+    </subsection>
+    
+    <subsection>
+      <title> What you will learn </title>
+      <p></p>
+    </subsection>
+  </section>
+  
+  <section xml:id="section-norms-absolute-value">
+    <title> Absolute Value </title>
+    <todo> Should this be moved to Preliminaries? </todo>
+    
+    <subsection>
+      <title> Absolute value of a real number </title>
+      
+    </subsection>
+    
+    <subsection>
+      <title> Absolute value of a complex number </title>
+      
+    </subsection>
+  </section>
+  
+  <section xml:id="section-norms-vector-norms">
+    <title> Vector Norms </title>
+    
+    <subsection>
+      <title> What is a Vector Norm? </title>
+      
+      <p>
+	A (vector) norm extends the notion of an absolute value (length) to vectors:
+	<definition>
+	  <p>
+	    Let <m> \nu: \Cn \rightarrow \R </m>.  Then <m> \nu </m> is a (vector) norm
+	    if for all <m> x, y \in \Cn </m> and all <m> \alpha \in \C </m>
+	    <ul>
+	      <li>
+		<m> x \neq 0 \Rightarrow \nu( x ) > 0 </m>  (<m> \nu </m> is positive definite),
+	      </li>
+	      <li>
+		<m> \nu( \alpha x ) = \vert \alpha \vert \nu( x )</m> (<m> \nu </m> is homogeneous), and
+	      </li>
+	      <li>
+		<m> \nu(x + y ) \leq \nu( x ) + \nu( y ) </m>
+		(<m> \nu </m> obeys the triangle inequality).
+	      </li>
+	    </ul>
+	  </p>
+	</definition>
+      </p>
+      
+      
+      <exercise>
+	<statement>
+	  <p>
+	    If <m> \nu: \C^n \rightarrow \R </m> is a norm,
+	    then <m> \nu( 0 ) = 0 </m> (where the first <m> 0 </m>
+	    denotes the zero vector in <m> \C^n </m>).
+	  </p>
+	  <p>
+	    TRUE/FALSE
+	  </p>
+	</statement>
+	<answer>
+	  <p>
+	    TRUE.
+	  </p>
+	  <p>
+	    Now prove it.
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    Let <m> x \in \C^n </m> and <m> \vec{0} </m> the zero vector of size <m> n </m> and <m>
+	    0 </m> the scalar zero.  
+	    Then
+	    <me>
+	      \begin{array}{l}
+	      \nu( \vec 0 ) \\
+	      ~~~= ~~~~( 0 \cdot x = \vec 0 ) \\
+	      \nu( 0 \cdot x )  \\
+	      ~~~=~~~~{\rm is~homogeneous} \\
+	      0 \nu( x )  \\
+	      ~~~=~~~( 0 \cdot x = \vec 0 ) \\
+	      ~~~ = ({\rm algebra})
+	      0
+	      \end{array}
+	    </me>
+	  </p>
+	</solution>
+	<hint>
+	  <p>
+	    <m> 0 x = 0 </m> (multiplying any vector <m> x </m> by the 
+	    scalar <m> 0 </m> results in a vector of zeroes. 
+	  </p>
+	</hint>
+      </exercise>
+      
+      <remark>
+	<p>
+	  We will typically use <m> \| \cdot \| </m> instead of <m>
+	  \nu( \cdot ) </m> for a function that is a norm.
+	</p>
+      </remark>
+    </subsection>
+    
+    <subsection>
+      <title> The vector 2-norm (Euclidean length)</title>
+      
+      <p>
+	The length of a vector is most commonly measured by the "square root
+	of the sum of the square of the elements."  For reasons that will
+	become clear later in this section, we will call this the vector 2-norm.
+      </p>
+      
+      <definition>
+	<p>
+	  The vector 2-norm <m> \| \cdot \|_2 : \C^n \rightarrow \R </m>
+	  is defined for <m> x \in \C^n </m> by 
+	  <me>
+	    \| x \|_2 =
+	    \sqrt{ \vert \chi_0 \vert^2  + \cdots + \vert \chi_{n-1}  \vert^2 } .
+	    = \sqrt{x^H x} = \sqrt{ \overline \chi_0
+	    \chi_0 + \cdots + \overline \chi_{n-1} \chi_{n-1} } 
+	    
+	  </me>
+	</p>
+      </definition>
+      
+      <p>
+	In an undergraduate course, you should have learned that,
+	given <m> x, y \in \R^n </m>, with <m> y </m> of length one, 
+      </p>
+      <ul>
+	<li>
+	  <p>
+	    the component of <m> x </m> in
+	    the direction of <m> y </m> is given by <m> y^T x y </m>:
+	    <image source="images/CSpicture.jpg" width="20%"/>
+	  </p>
+	</li>
+	<li>
+	  <p>
+	    The length of <m> x </m> is <m> \| x \|_2 </m> and the
+	    length of <m> y^T x y </m> is <m> \vert x^T y \vert
+	    </m>.
+	  </p>
+	</li>
+      </ul>
+      <p>
+        Thus <m> \vert x^T y \vert \leq \| x \|_2 </m>.  Now, if
+        <m> y </m> is not of unit length, then <m> \vert x^T ( y /
+        \| y \|_2 ) \vert \leq \| x \|_2 </m> or, equivalently, <m>
+        \vert x^T y \vert \leq \| x \|_2 \| y \|_2</m>.  This is
+        known as the Cauchy-Schwartz inequality for real valued
+        vectors.  Here is its generalization for complex valued
+        vectors.
+      </p>
+      <p>
+	To show that the vector 2-norm is a norm, we will need the following
+	theorem:
+      </p>
+      <theorem>
+	<title> Cauchy-Schwartz inequality </title>
+	<p>
+	  Let <m> x, y \in \C^n </m>.  Then <m> \vert x^H y \vert
+	  \leq \| x \|_2 \| y \|_2</m>.
+	</p>
+      </theorem>
+      <proof>
+	<p>  
+	  Assume that <m> x \neq 0 </m> and <m> y \neq 0 </m>, since otherwise the
+	  inequality is trivially true.  
+	  We can then choose <m> \widehat x = x / \| x \|_2 </m>
+	  and <m> \widehat y = y / \| y \|_2 </m>.
+	  This leaves us to prove that 
+	  <m>
+	  \vert \widehat x^H \widehat y \vert \leq 1</m>
+	  since <m> \| \widehat x \|_2 = \| \widehat y \|_2 = 1 </m>.
+	</p>
+	<p>
+	  Pick <m> \alpha \in \C </m> with <m> \vert \alpha \vert
+	  = 1 </m> so that <m> \alpha \widehat x^H \widehat y </m>
+	  is real and nonnegative.  Another way of saying this is
+	  that <m> \alpha \widehat x^H \widehat y = \vert \widehat
+	  x^H \widehat y
+	  \vert </m>.  Note that since it is real we also know
+	  that <m> \alpha \widehat x^H \widehat y = \overline{
+	  \alpha \widehat x^H \widehat y } = \overline{\alpha}
+	  \widehat y^H \widehat x </m>.
+	</p>
+	<p>
+	  Now,
+	  <me>
+	    \begin{array}{l}
+	    0 \\
+	    ~~~\leq~~~(\| \cdot \|_2 {\rm ~is~nonnegative}) \\
+	    \| \widehat x - \alpha \widehat y \|_2^2 \\
+	    ~~~ = ~~~({\rm definition~of~}\| \cdot \|_2) \\
+	    ( x - \alpha \widehat y )^H ( \widehat x - \alpha \widehat y )  (<m> \| z \|_2^2 = z^H z </m>)
+	    \\
+	    ~~~= ~~~~ ({\rm multiplying~out}) \\
+	    \widehat x^H \widehat x - \overline \alpha \widehat y^H \widehat
+	    x - \alpha \widehat x^H \widehat y + \overline \alpha
+	    \alpha \widehat y^H \widehat y \\
+	    ~~~ =~~~~  ({\rm above~assumptions~and~observations})
+	    \\
+	    1 - 2 \alpha \widehat x^H \widehat y + \vert \alpha \vert^2 
+	    \\
+	    ~~~ =~~~~ (\alpha \widehat x^H \widehat y = \vert
+	    \widehat x^H \widehat y \vert) \\
+	    2 - 2 \vert \widehat x^H \widehat y  \vert.
+	    \end{array}
+	  </me>
+	  Thus 
+	  <m> \vert \widehat x^H \widehat y \vert \leq 1 </m> and therefore
+	  <m> \vert  x^H  y \vert \leq \| x\|_2 \| y \|_2 </m>.  
+	</p>
+      </proof>
+      <theorem>
+	<p>
+	  The vector 2-norm is a norm.
+	</p>
+      </theorem>
+      <proof>
+	<p>
+	  To prove this, we merely check whether the three conditions are met:
+	</p>
+	<p>
+	  Let <m> x, y \in \C^n </m> and <m> \alpha \in \C </m> be arbitrarily chosen.  Then
+	  <ul>
+	    <li>
+	      <p>
+		<m> x \neq 0 \Rightarrow \| x \|_2 > 0 </m> (<m> \| \cdot \|_2 </m> is positive definite):
+	      </p>
+	      <p>
+		Notice that <m> x \neq 0 </m> means that at least one of its components is nonzero.
+		Let's assume that <m> \chi_j \neq 0 </m>.  Then
+		<me> \| x \|_2 = \sqrt{ \vert \chi_0 \vert^2 + \cdots + \vert \chi_{n-1} \vert^2 }
+		\geq \sqrt{ \vert \chi_j \vert^2 } = \vert \chi_j \vert > 0 .
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| \alpha x \|_2 = \vert \alpha \vert \| x
+		\|_2 </m> (<m> \| \cdot \|_2 </m> is homogeneous):
+		<me> \begin{array}{lcl} \| \alpha x \|_2 \amp =\amp
+		\sqrt{ \vert \alpha \chi_0 \vert^2 + \cdots +
+		\vert \alpha \chi_{n-1} \vert^2 } \\ \amp=\amp
+		\sqrt{ \vert \alpha \vert^2 \vert \chi_0 \vert^2 +
+		\cdots + \vert \alpha \vert^2 \vert \chi_{n-1}
+		\vert^2 } \\ \amp=\amp \sqrt{ \vert \alpha \vert^2
+		( \vert \chi_0 \vert^2 + \cdots + \vert \chi_{n-1}
+		\vert^2 ) } \\ \amp=\amp \vert \alpha \vert \sqrt
+		{ \vert \chi_0 \vert^2 + \cdots + \vert \chi_{n-1}
+		\vert^2 } \\ \amp=\amp \vert \alpha \vert \| x
+		\|_2 .  \end{array}
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| x + y  \|_2 \leq \| x \|_2 + \| y \|_2 </m>
+		(<m> \| \cdot \|_2 </m> obeys the triangle inequality):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| x + y \|_2^2 \amp=\amp ( x + y )^H ( x + y ) \\
+		  \amp=\amp x^H x + y^H x + x^H y + y^H y  \\
+		  \amp \leq \amp x^H x + \vert y^H x \vert + \vert
+		  x^H y \vert + y^H y  \\
+		  \amp \leq \amp \| x \|_2^2 + 2 \| x \|_2 \| y \|_2 + \| y \|_2^2 \\
+		  \amp = \amp ( \| x \|_2  + \| y \|_2 )^2.
+		  \end{array}
+		</me>
+		Taking the square root of both sides yields the
+		desired result.
+	      </p>
+	    </li>
+	  </ul>
+	</p>
+      </proof>
+      
+    </subsection>
+    
+    <subsection>
+      <title> The vector 1-norm</title>
+      
+      <definition>
+	<p>
+	  The vector 1-norm <m> \| \cdot \|_1 : \C^n \rightarrow \R </m> is defined for <m> x \in \C^n </m> by 
+	  <me> 
+	    \| x \|_1 = 
+	    \vert \chi_0 \vert + \vert \chi_1 \vert + \cdots + \vert \chi_{n-1} \vert.
+	  </me>	    
+	</p>
+      </definition>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    The vector 1-norm is a norm.
+	  </p>
+	  <p>
+	    TRUE/FALSE
+	  </p>
+	</statement>
+	<answer>
+	  <p>
+	    TRUE
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    We show that the three conditions are met:
+	  </p>
+	  <p>
+	    Let <m> x, y \in \C^n </m> and <m> \alpha \in \C </m>
+	    be arbitrarily chosen.  Then
+	  </p>
+	  <ul>
+	    <li>
+	      <p>
+		<m> x \neq 0 \Rightarrow \| x \|_1 > 0 </m> (<m> \| \cdot \|_1 </m> is positive definite):
+	      </p>
+	      <p>
+		Notice that <m> x \neq 0 </m> means that at least one of its components is nonzero.
+		Let's assume that <m> \chi_j \neq 0 </m>.  Then
+		<me> \| x \|_1 = \vert \chi_0 \vert + \cdots + \vert \chi_{n-1} \vert
+		\geq \vert \chi_j \vert  > 0 .
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| \alpha x \|_1 = \vert \alpha \vert \| x \|_1 </m> (<m> \| \cdot \|_1 </m> is homogeneous):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| \alpha x \|_1 \amp =\amp  
+		  \vert \alpha \chi_0 \vert + \cdots + \vert \alpha
+		  \chi_{n-1} \vert  \\
+		  \amp =\amp  
+		  \vert \alpha \vert \vert \chi_0 \vert + \cdots +
+		  \vert \alpha \vert \vert \chi_{n-1} \vert \\
+		  \amp =\amp 
+		  \vert \alpha \vert ( \vert \chi_0 \vert + \cdots + \vert \chi_{n-1}
+		  \vert )  \\
+		  \amp =\amp  \vert \alpha \vert ( \vert \chi_0 \vert + \cdots
+		  + \vert \chi_{n-1} 	  \vert ) \\
+		  \amp =\amp  \vert \alpha \vert \| x \|_1.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| x + y  \|_1 \leq \| x \|_1 + \| y \|_1 </m>
+		(<m> \| \cdot \|_1 </m> obeys the triangle
+		inequality):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| x + y \|_1 \amp =\amp  
+		  \vert \chi_0 + \psi_0 \vert 
+		  +
+		  \vert \chi_1 + \psi_1 \vert 
+		  +
+		  \cdots
+		  +
+		  \vert \chi_{n-1} + \psi_{n-1} \vert  \\
+		  \amp \leq\amp 
+		  \vert \chi_0 \vert + \vert \psi_0 \vert 
+		  +
+		  \vert \chi_1 \vert + \vert \psi_1 \vert 
+		  +
+		  \cdots
+		  +
+		  \vert \chi_{n-1} \vert + \vert \psi_{n-1} \vert  \\
+		  \amp =\amp 
+		  \vert \chi_0 \vert 
+		  +
+		  \vert \chi_1 \vert 
+		  +
+		  \cdots
+		  +
+		  \vert \chi_{n-1} \vert 
+		  +
+		  \vert \psi_0 \vert 
+		  +
+		  \vert \psi_1 \vert 
+		  +
+		  \cdots
+		  +
+		  \vert \psi_{n-1} \vert  \\
+		  \amp = \amp  \| x \|_1 + \| y \|_1.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	  </ul>
+	</solution>
+      </exercise>
+      <p>	  
+	The vector 1-norm is sometimes referred to as the "taxi-cab norm".  
+	It is the distance that a taxi travels along the streets of a city
+	that has square city blocks.
+      </p>
+    </subsection>
+    
+    <subsection>
+      <title> The vector <m>\infty</m>-norm</title>
+      
+      <definition>
+	<p>
+	  The vector <m>\infty</m>-norm <m> \| \cdot \|_\infty : \C^n \rightarrow \R </m> is defined for <m> x \in \C^n </m> by 
+	  <me> 
+	    \| x \|_\infty = \max_{i=0}^{n-1} \vert \chi_i \vert.
+	  </me>	    
+	</p>
+      </definition>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    The vector <m>\infty</m>-norm is a norm.
+	  </p>
+	  <p>
+	    TRUE/FALSE
+	  </p>
+	</statement>
+	<answer>
+	  <p>
+	    TRUE
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    We show that the three conditions are met:
+	  </p>
+	  <p>
+	    Let <m> x, y \in \C^n </m> and <m> \alpha \in \C </m>
+	    be arbitrarily chosen.  Then
+	  </p>
+	  <ul>
+	    <li>
+	      <p>
+		<m> x \neq 0 \Rightarrow \| x \|_\infty > 0 </m> (<m> \| \cdot \|_\infty </m> is positive definite):
+	      </p>
+	      <p>
+		Notice that <m> x \neq 0 </m> means that at least one of its components is nonzero.
+		Let's assume that <m> \chi_j \neq 0 </m>.  Then
+		<me> \| x \|_\infty = \max_{i=0}^{n-1} \vert \chi_i
+		\vert \ge \vert \chi_j \vert > 0.
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| \alpha x \|_\infty = \vert \alpha \vert \| x \|_\infty </m> (<m> \| \cdot \|_\infty </m> is homogeneous):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| \alpha x \|_\infty \amp =\amp  
+		  \max_{i=0}^{n-1} \vert \alpha \chi_i \vert  \\
+		  \amp =\amp  
+		  \max_{i=0}^{n-1} \vert \alpha \vert \vert \chi_i \vert  \\
+		  \amp =\amp 
+		  \vert \alpha \vert \max_{i=0}^{n-1} \vert \chi_i \vert  \\
+		  \amp =\amp  \vert \alpha \vert \| x \|_\infty.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| x + y  \|_\infty \leq \| x \|_\infty + \| y \|_\infty </m>
+		(<m> \| \cdot \|_\infty </m> obeys the triangle
+		inequality):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| x + y \|_\infty \amp =\amp
+		  \max_{i=0}^{n-1} 
+		  \vert \chi_i + \psi_i \vert \\
+		  \amp \leq\amp 
+		  \max_{i=0}^{n-1} (
+		  \vert \chi_i \vert + \vert \psi_i \vert )
+		  \\
+		  \amp \leq\amp 
+		  \max_{i=0}^{n-1} 
+		  \vert \chi_i \vert + \max_{i=0}^{n-1} \vert \psi_i \vert \\
+		  \amp = \amp  \| x \|_\infty + \| y \|_\infty.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	  </ul>
+	</solution>
+      </exercise>
+    </subsection>
+    
+    <subsection>
+      <title> The vector <m>p</m>-norm</title>
+      
+      <introduction>
+	<p>
+	  In this course, we will only use the vector 1-norm,
+	  2-norm, and <m>\infty</m>-norms.  For completeness, we
+	  briefly discuss their generalization: the vector
+	  <m>p</m>-norm.
+	</p>
+      </introduction>
+      <definition>
+	<p>
+	  Given <m> p \geq 1 </m>, 
+	  the vector <m>p</m>-norm <m> \| \cdot \|_p : \C^n \rightarrow \R </m> is defined for <m> x \in \C^n </m> by 
+	  <me> 
+	    \| x \|_p = \sqrt[p]{\vert \chi_0 \vert^p + \cdots + \vert
+	    \chi_{n-1} \vert^p} = \left( \sum_{i=0}^{n-1} \vert \chi_i 
+	    \vert^p \right)^{1/p}.
+	  </me>	    
+	</p>
+      </definition>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    The vector <m>p</m>-norm is a norm.
+	  </p>
+	  <p>
+	    TRUE/FALSE
+	  </p>
+	</statement>
+	<answer>
+	  <p>
+	    TRUE
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    We show that the three conditions are met:
+	  </p>
+	  <p>
+	    Let <m> x, y \in \C^n </m> and <m> \alpha \in \C </m>
+	    be arbitrarily chosen.  Then
+	  </p>
+	  <ul>
+	    <li>
+	      <p>
+		<m> x \neq 0 \Rightarrow \| x \|_p > 0 </m> (<m> \| \cdot \|_p </m> is positive definite):
+	      </p>
+	      <p>
+		Notice that <m> x \neq 0 </m> means that at least one of its components is nonzero.
+		Let's assume that <m> \chi_j \neq 0 </m>.  Then
+		<me> \| x \|_p = \left( \sum_{i=0}^{n-1} \vert \chi_i 
+		\vert^p \right)^{1/p} \ge \left( \vert \chi_j \vert^p
+		\right)^{1/p} = \vert \chi_j \vert > 0.
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| \alpha x \|_p = \vert \alpha \vert \| x \|_p </m> (<m> \| \cdot \|_p </m> is homogeneous):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| \alpha x \|_p
+		  \amp =\amp  
+		  \left( \sum_{i=0}^{n-1} \vert \alpha \chi_i 
+                  \vert^p \right)^{1/p}  \\
+		  \amp =\amp  
+		  \left( \sum_{i=0}^{n-1} \vert \alpha \vert^p \vert \chi_i 
+                  \vert^p \right)^{1/p}  \\
+		  \amp =\amp  
+		  \left( \vert \alpha \vert^p \sum_{i=0}^{n-1} \vert \chi_i 
+                  \vert^p \right)^{1/p}  \\
+		  \amp =\amp  
+		  \left( \vert \alpha \vert^p \right)^{1/p} \left( \sum_{i=0}^{n-1} \vert \chi_i 
+                  \vert^p \right)^{1/p}  \\
+		  \amp =\amp  
+		  \vert \alpha \vert \left( \sum_{i=0}^{n-1} \vert \chi_i 
+                  \vert^p \right)^{1/p}  \\
+		  \amp =\amp  
+		  \vert \alpha \vert \vert x \vert_p.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	    <li>
+	      <p>
+		<m> \| x + y  \|_p \leq \| x \|_p + \| y \|_p </m>
+		(<m> \| \cdot \|_p </m> obeys the triangle
+		inequality):
+	      </p>
+	      <p>
+		<me>
+		  \begin{array}{lcl}
+		  \| x + y \|_p \amp =\amp
+		  \max_{i=0}^{n-1} 
+		  \vert \chi_i + \psi_i \vert \\
+		  \amp \leq\amp 
+		  \max_{i=0}^{n-1} (
+		  \vert \chi_i \vert + \vert \psi_i \vert )
+		  \\
+		  \amp \leq\amp 
+		  \max_{i=0}^{n-1} 
+		  \vert \chi_i \vert + \max_{i=0}^{n-1} \vert \psi_i \vert \\
+		  \amp = \amp  \| x \|_p + \| y \|_p.
+		  \end{array}
+		</me>
+	      </p>
+	    </li>
+	  </ul>
+	</solution>
+      </exercise>
+      
+      <remark>
+	<p>
+	  The vector 1-norm and 2-norm are special cases of the vector
+	  <m>p</m>-norm.  It can be easiy show that the vector
+	  <m>\infty</m>-norm is also related:
+	  <me>
+	    \lim_{p \rightarrow \infty} \| x \|_p = \| x \|_{\infty}.
+	  </me>
+	</p>
+      </remark>
+      
+    </subsection>
+    
+    <subsection xml:id="section-norms-vector-equivalence">
+      <title> Equivalence of vector norms </title>
+      
+      <p>
+	Norms are going to be used to reason, later in the course, that 
+	vectors are small.  It would be unfortunate if a vector were 
+	small in one norm yet large in another norm.  For this reason,
+	the following theorem is crutial to future discuss. 
+      </p>
+      
+      <theorem>
+	<title> Equivalence of vector norms </title>
+	<p>
+	  Let <m> \| \cdot \|: \C^n \rightarrow \R </m> and <m> \vert \vert 
+	  \vert \cdot \vert \vert \vert: \C^n \rightarrow \R </m> both be 
+	  vector norms. 
+	  Then there exist positive scalars <m> \sigma </m> and <m> \tau </m>
+	  such that for all <m> x \in \Cn </m>
+	  <me>
+	    \sigma \| x \| \leq \vert \vert \vert x \vert \vert \vert 
+	    \leq \tau \| x \|. 
+	  </me>
+	</p>
+      </theorem>
+      
+      <proof>
+	<p>
+	  The proof 
+	  depends on a result from real analysis (sometimes called "advanced 
+	  calculus") that states that 
+	  <m> \sup_{x \in S} f( x ) </m> is attained for some vector <m> x \in S </m> as long as 
+	  <m> f </m> is continuous and <m> S </m> is a compact set. 
+	  The set of vectors that satisfied <m>  x \in \C^n </m> and 
+	  <m> \| x \|_\nu = 1 </m> is a compact set. 
+	  Since real analysis is not a prerequisite for this course, the reader 
+	  may have to take this on faith!  From real analysis we also learn that 
+	  if the supremum is attained by an element in <m> S </m>, then 
+	  <m> \sup_{x \in S} f( x ) = \max_{x \in S} f( x ) </m>. 
+	</p>
+	<p>
+	  We will prove that there exists a <m> \tau </m> such that for all <m>
+	  x \in \C^n </m>
+	  <me>
+	    \vert \vert \vert x \vert \vert \vert 
+	    \leq \tau \| x \|
+	  </me>
+	  leaving the rest of the proof to the reader. 
+	</p>
+	<p>
+	  Let <m> x \in \C^n </m> be an arbitary vector.  W.l.o.g. assume that <m> x 
+	  \neq 0 </m>. 
+	  Then 
+	</p>
+	<me>
+	  \begin{array}{l}
+	  \vert \vert \vert x \vert \vert \vert \\
+	  ~~~ = ~~~~ \lt {\rm algebra} \gt \\
+	  \frac{\vert \vert \vert x \vert \vert \vert}{\| x \|} \| x 
+	  \| \\
+	  ~~~ \le ~~~~ \lt  {\rm algebra} \gt \\ 
+	  \left( \sup_{z \neq 0} \frac{\vert \vert \vert z \vert \vert 
+	  \vert}{\| z \|} \right) \| x \| \\
+	  ~~~ = ~~~~ \lt  {\rm homogenuity} \gt \\
+	  \left( \sup_{z \neq 0} \vert \vert \vert \frac{z}{\| z \|} \vert \vert 
+	  \vert \right) \| x \| \\	  
+	  ~~~ = ~~~~ \lt  {\rm change~of~variables:~} y = z / \| z \| \gt \\
+	  \left( \sup_{\| y \| = 1} \vert \vert \vert y \vert \vpert 
+	  \vert \right) \| x \| \\
+	  ~~~ = ~~~~ \lt {\rm the~set~}\| y \| = 1 {\rm ~is~compact} \gt \\
+	  \left( \max_{\| y \| = 1} \vert \vert \vert y \vert \vert 
+	  \vert\right) \| x \|
+	  \end{array}
+	</me>
+	<p>
+	  The desired <m> \tau  </m> can now be chosen to equal 
+	  <m> \max_{\| y \| = 1} \vert \vert \vert y \vert \vert 
+	  \vert </m>. 
+	</p>
+      </proof>
+      
+      <remark>
+	<p>
+	  The bottom line is that, modulo a constant, if a vector is 
+	  "small" in one norm, it is "small" in any other norm. 
+	</p>
+      </remark>
+      
+    </subsection>
+    
+  </section>
+  
+  <section xml:id="section-norms-matrix-norms">
+    <title> Matrix Norms </title>
+    
+    <subsection xml:id="section-norms-what-is-a-matrix-norm">
+      <title> What is a Matrix Norm? </title>
+      
+    </subsection>
+    
+    <subsection xml:id="section-norms-frobenius-norm">
+      <title> The Frobenius Norm </title>
+      
+      <definition>
+	<p>
+	  The Frobenius norm <m> \| \cdot \|_F : \C^{m \times n} \rightarrow \R </m> is defined for <m> A \in \C^{m \times n} </m> by 
+	  <me> 
+	    \| A \|_F = 
+	    \sqrt{
+	    \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} 
+	    \vert \alpha_{i,j}  \vert^2 }
+	    =
+	    \sqrt{
+	    \begin{array}{c c c c c c}
+	    \vert a_{0,0} \vert^2 \amp + \amp \cdots  \amp + \amp  \vert a_{0,n-1} \vert^2 
+	    \amp  + \\
+	    \vdots  \amp  \vdots  \amp  \amp  \vdots  \amp
+	    \vdots  \amp  \vdots \\
+	    \vert a_{m-1,0} \vert^2 \amp + \amp \cdots  \amp + \amp  \vert a_{m-1,n-1} \vert^2 .
+	    \end{array}
+	    }
+	  </me>
+	</p>
+      </definition>
+      <p>
+	One can think of the Frobenius norm as taking the columns
+	of the matrix, stacking them on top of each other to create a vector
+	of size <m> m \times n </m>, and then taking the vector 2-norm of the
+	result.
+      </p>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    The Frobenius norm is a norm.
+	  </p>
+	  <p>
+	    TRUE/FALSE
+	  </p>
+	</statement>
+	<answer>
+	  <p>
+	    TRUE>
+	  </p>
+	  <p>
+	    Now prove it!
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    The answer is to realize that if <m> A = \left( \begin{array}{c | c | c
+	    | c} a_0 \amp a_1 \amp \cdots \amp a_{n-1} \end{array} \right) </m>
+	    then
+	    <me>
+	      \begin{array}{l}
+	      \| A \|_F \\
+	      ~~~=~~~~ \lt {\rm definition} \gt \\ 
+	      \sqrt{
+	      \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} 
+	      \vert \alpha_{i,j}  \vert^2 
+	      } \\
+	      ~~~=~~~~ \lt {\rm commutivity~of~addition} \gt \\ 
+	      \sqrt{
+	      \sum_{j=0}^{n-1} \sum_{i=0}^{m-1} 
+	      \vert \alpha_{i,j}  \vert^2 
+	      } \\
+	      ~~~=~~~~ \lt {\rm definition~of~vector~2-norm} \gt \\ 
+	      \sqrt{
+	      \sum_{j=0}^{n-1} \| a_j \|_2^2 
+	      } \\
+	      ~~~=~~~~ \lt {\rm definition~of~vector~2-norm} \gt \\ 
+	      \sqrt{
+	      \left\|
+	      \left( \begin{array}{c}
+	      a_0 \\ 
+	      a_1 \\ 
+	      \vdots \\ 
+	      a_{n-1}
+	      \end{array}
+	      \right)
+	      \right\|_2^2
+	      }.
+	      \end{array}
+	    </me>
+	    In other words, it equals the vector 2-norm of the vector that is
+	    created by stacking the columns of <m> A </m> on top of each other.
+	    The fact that the Frobenius norm is a norm then comes from realizing
+	    this connection and exploiting it.
+	  </p>
+	  <p>
+	    Alternatively, just grind through the three conditions!
+	  </p>
+	</solution>
+      </exercise>
+      
+      <p>
+	Similarly, other matrix norms can be created from vector norms by viewing
+	the matrix as a vector.  It turns out that, other than the Frobenius
+	norm, these aren't particularly interesting in practice.
+      </p>
+      
+    </subsection>
+    
+    <subsection xml:id="section-norms-induced-matrix-norms">
+      <title> Induced matrix norms</title>
+      
+      <definition>
+	<p>
+	  Let <m> \| \cdot \|_\mu: \C^m \rightarrow \R </m> and 
+	  <m> \| \cdot \|_\nu: \C^n \rightarrow \R </m> be vector norms.
+	  Define <m> \| \cdot \|_{\mu,\nu} : \C^{m \times n} \rightarrow \R </m> by
+	  <me>
+	    \| A \|_{\mu,\nu} = 
+	    \sup_{
+	    \begin{array}{c}
+	    x \in \C^n \\ x \neq 0 
+	    \end{array}
+	    }
+	    \frac{\| A x \|_\mu}{\| x \|_{\nu}}. 
+	  </me>
+	</p>
+      </definition>
+      
+      <p>  Matrix norms that are defined in this way are said to be <i>
+      induced </i> matrix norms.
+      </p>
+      
+      <remark>
+	<p>
+	  In context, it is obvious (from the column size of the matrix)
+	  what the size of vector <m> x</m> is.  For this reason, we
+	  will write
+	  <me>
+	    \| A \|_{\mu,\nu} = 
+	    \sup_{
+	    \begin{array}{c}
+	    x \in \C^n \\ x \neq 0 
+	    \end{array}
+	    }
+	    \frac{\| A x \|_\mu}{\| x \|_{\nu}} 
+	  </me>
+	  as
+	  <me>
+	    \| A \|_{\mu,\nu} = 
+	    \sup_{x \neq 0}
+	    \frac{\| A x \|_\mu}{\| x \|_{\nu}}. 
+	  </me>
+	</p>
+      </remark>
+      
+      <p>
+	Let us start by interpreting this.  How "big" <m> A </m>
+	is, as measured by <m> \| A \|_{\mu,\nu} </m>, is defined as
+	the most that <m> A </m> magnifies the length of nonzero
+	vectors, where the length of a vector (<m>x</m>) is measured
+	with norm <m> \| \cdot \|_\nu </m> and the length of a
+	transformed vector (<m> A x </m>) is measured with norm <m>
+	\| \cdot \|_\mu </m>.
+      </p>
+      <p>
+	Two comments are in order.  First, 
+	<me>
+	  \sup_{ x \neq 0 }
+	  \frac{\| A x \|_\mu}{\| x \|_{\nu}}
+	  =
+	  \sup_{\| x \|_{\nu} = 1}
+	  {\| A x \|_\mu}{}.
+	</me>
+	This follows from the following sequence of equivalences:
+	<me>
+	  \begin{array}{l}
+	  \sup_{x \neq 0}
+	  \frac{\| A x \|_\mu}{\| x \|_{\nu}} \\
+	  ~~~=~~~~ \lt {\rm homogenuity~of~norm} \gt \\
+	  \sup_{x \neq 0}
+	  \| \frac{A x}{\| x \|_{\nu}} \|_\mu \\
+	  ~~~=~~~~ \lt {\rm distibution~of~matrix~multiplication}\gt  \\
+	  \sup_{x \neq 0}
+	  \| A \frac{x}{\| x \|_{\nu}} \|_\mu \\
+	  ~~~=~~~~ \lt {\rm substitute~} y = x / \| x \|_\nu \gt \\
+	  \sup_{\vert y \vert_\nu = 1}
+	  \| A y \|_\mu
+	  \end{array}
+	</me>
+      </p>
+      <p>
+	Second, the "<m>\sup</m>" (which stands for
+	supremum) is used because we can't claim yet that there is a vector <m>
+	x </m> with <m> \| x \|_\nu = 1 </m> for which 
+	<me>
+	  \sup_{x \neq 0}
+	  \frac{\| A x \|_\mu}{\| x \|_{\nu}}
+	</me>
+	or, alternatively,
+	for which
+	<me>
+	  \sup_{\| x \|_\nu = 1}
+	  \| A x \|_\mu.
+	</me>
+	In other words, it is not immediately obvious that there is a vector
+	for which the supremum is attained.
+	The 
+	fact is that there is always such a vector <m> x </m>.
+	The proof 
+	depends on a result from real analysis (sometimes called "advanced 
+	calculus") that states that 
+	<m> \sup_{x \in S} f( x ) </m> is attained for some vector <m> x \in S </m> as long as 
+	<m> f </m> is continuous and <m> S </m> is a compact set. 
+	The set of vectors that satisfied <m>  x \in \C^n </m> and 
+	<m> \| x \|_\nu = 1 </m> is a compact set. 
+	Since real analysis is not a prerequisite for this course, the reader 
+	may have to take this on faith!  From real analysis we also learn that 
+	if the supremum is attained by an element in <m> S </m>, then 
+	<m> \sup_{x \in S} f( x ) = \max_{x \in S} f( x ) </m>.  Thus, we replace <m>
+	\sup </m> by <m> \max </m> from here on in our discussion. 
+      </p>
+      <p>
+	We conclude that the following two definitions are equivalent definitions to the
+	one we already gave:
+      </p>
+      <definition>
+	<p>
+	  Let <m> \| \cdot \|_\mu: \C^m \rightarrow \R </m> and 
+	  <m> \| \cdot \|_\nu: \C^n \rightarrow \R </m> be vector norms.
+	  Define <m> \| \cdot \|_{\mu,\nu} : \C^{m \times n} \rightarrow \R </m> by
+	  <me>
+	    \| A \|_{\mu,\nu} = 
+	    \max_{x \neq 0}
+	    \frac{\| A x \|_\mu}{\| x \|_{\nu}}.
+	  </me>
+	</p>
+      </definition>
+      <p>
+	and
+      </p>
+      <definition>
+	<p>
+	  Let <m> \| \cdot \|_\mu: \C^m \rightarrow \R </m> and 
+	  <m> \| \cdot \|_\nu: \C^n \rightarrow \R </m> be vector norms. 
+	  Define <m> \| \cdot \|_{\mu,\nu} : \C^{m \times n} \rightarrow \R </m> by 
+	  <me>
+	    \| A \|_{\mu,\nu} = 
+	    \max_{\| x \|_{\nu}=1}
+	    \| A x \|_\mu. 
+	  </me>
+	</p>
+      </definition>
+      
+      <remark>
+	<p>
+	  In this course, we will often encounter proofs involving norms.  Such
+	  proofs are often much cleaner if one starts by strategically picking
+	  the most convenient of these two definitions.  
+	</p>
+      </remark>
+      
+      <theorem>
+	<p>
+	  <m> \| \cdot \|_{\mu,\nu} : \C^{m \times n} \rightarrow \R </m> is a
+	  norm.
+	</p>
+      </theorem>
+      
+      <proof>
+	<p>
+	  To prove this, we merely check whether the three conditions are met:
+	</p>
+	<p>
+	  Let <m> A, B \in \C^{m \times n} </m> and <m> \alpha \in \C </m> be arbitrarily chosen.  Then
+	</p>
+	<ul>
+	  <li>
+	    <p>
+	      <m> A \neq 0 \Rightarrow \| A \|_{\mu,\nu} > 0 </m> (<m> \| \cdot \|_{\mu,\nu} </m> is positive definite):
+	    </p>
+	    <p>
+	      Notice that <m> A \neq 0 </m> means that at least one of its columns is not
+	      a zero vector (since at least one element).  Let us assume it is
+	      the <m> j </m>th
+	      column, <m> a_j </m>, that is nonzero.
+	      Let <m> e_j </m> equal the column of <m> I </m> (the
+	      identity matrix) indexed with <m> j </m>.
+	      Then 
+	      <me>
+		\begin{array}{l}
+		\| A \|_{\mu,\nu} \\
+		~~~=~~~~\lt {\rm definition} \gt \\ 
+		\max_{x \neq 0}
+		\frac{\| A x \|_\mu}{\| x \|_{\nu}}
+		~~~\ge ~~~~\lt e_j {\rm ~is~a~specific~vector} \gt \\ 
+		\frac{\| A e_j \|_\mu}{\| e_j \|_{\nu}} \\
+		~~~=~~~~\lt A e_j = a_j \gt \\ 
+		\frac{\| a_j \|_\mu}{\| e_j \|_{\nu}}  \\
+		~~~\gt~~~~\lt  {\rm by~assumption~on~} j \gt \\ 
+		0.
+		\end{array}
+	      </me>
+	    </p>
+	  </li>
+	  <li>
+	    <p>
+	      <m> \| \alpha A \|_{\mu,\nu} = \vert \alpha \vert \| A \|_{\mu,\nu} </m> (<m> \| \cdot \|_{\mu,\nu} </m> is homogeneous):
+	    </p>
+	    <p>
+	      <me>
+		\begin{array}{l}
+		\| \alpha A \|_{\mu,\nu} = 
+		\max_{
+		\begin{arrayx \neq 0}
+		\frac{\| \alpha A x \|_\mu}{\| x \|_{\nu}} \\
+		~~~=~~~~\lt {\rm homogenuity} \gt \\  
+		\max_{x \neq 0}
+		\vert \alpha \vert \frac{\| A x \|_\mu}{\| x
+		\|_{\nu}} \\
+		~~~=~~~~\lt {\rm algebra} \gt \\  
+		\vert \alpha \vert 
+		\max_{x \neq 0}
+		\frac{\| A x \|_\mu}{\| x \|_{\nu}} \\
+		~~~=~~~~\lt {\rm definition} \gt \\  
+		\vert \alpha \vert 
+		\| A \|_{\mu,\nu}.
+		\end{array}
+	      </me>
+	    </p>
+	  </li>
+	  <li>
+	    <p>
+	      <m> \| A + B  \|_{\mu,\nu} \leq \| A \|_{\mu,\nu} + \| B \|_{\mu,\nu} </m>
+	      (<m> \| \cdot \|_{\mu,\nu} </m> obeys the triangle inequality).
+	    </p>
+	    <p>
+	      <me>
+		\begin{array}{l}
+		\| A + B  \|_{\mu,\nu} \\
+		~~~=~~~~ \lt {\rm definition} \gt \\		  
+		\max_{x \neq 0}
+		}
+		\frac{\| ( A + B )x \|_\mu}{\| x \|_{\nu}} \\
+		~~~=~~~~ \lt {\rm distributivity} \gt \\
+		\max_{x \neq 0}
+		\frac{\| Ax + B x \|_\mu}{\| x \|_{\nu}} \\
+		~~~\le~~~~ \lt {\rm triangle~inequality} \gt \\
+		\max_{x \neq 0}
+		\frac{\| Ax \|_\mu + \| B x \|_\mu}{\| x \|_{\nu}}  \\
+		~~~\le~~~~ \lt {\rm algebra} \gt \\
+		\max_{x \neq 0}
+		\left( \frac{\| Ax \|_\mu}{\| x \|_{\nu}} + \frac{\| B x \|_\mu}{\| x
+		\|_{\nu}} \right) \\
+		~~~\leq~~~~ \lt {\rm algebra} \gt \\
+		\max_{x \neq 0}
+		\frac{\| Ax \|_\mu}{\| x \|_{\nu}} + 
+		\max_{x \neq 0}
+		\frac{\| B x \|_\mu}{\| x
+		\|_{\nu}}   \\
+		~~~=~~~~ \lt {\rm definition} \gt \\
+		\| A \|_{\mu,\nu} + \| B \|_{\mu,\nu} .
+		\end{array}
+	      </me>
+	    </p>
+	  </li>
+	</ul>
+      </proof>
+      <p>
+	When <m> \! \cdot \|_\mu </m> and <m> \! \cdot \|_\nu </m>
+	are the same norm (but possibly for different sizes of vectors),
+      </p>
+      <definition>
+	<p>
+	  Define <m> \| \cdot \|_{\mu} : \C^{m \times n} \rightarrow
+	  \R </m> by
+	  <me>
+	    \| A \|_{\mu} = 
+	    \max_{x \neq 0}
+	    \frac{\| A x \|_\mu}{\| x \|_\mu} 
+	  </me>
+	  or, equivalently,
+	  <me>
+	    \| A \|_{\mu} = 
+	    \max_{\| x \|_{\mu}=1}
+	    \| A x \|_\mu. 
+	  </me>
+	</p>
+      </definition>
+      
+    </subsection>
+    
+    <subsection xml:id="section-norms-matrix-norms-special-cases">
+      
+      <title>Special cases used in practice</title>
+      
+      <p>
+	The most important case of <m> \| \cdot \|_{\mu,\nu}: \C^{m \times n} \rightarrow
+	\R </m> uses the same norm for <m> \| \cdot \|_\mu </m> and <m> \| \cdot
+	\|_\nu </m> (except that <m> m </m> may not equal <m> n </m>).
+      </p>
+      
+      \begin{definition}
+      <p>
+	For any <m> p </m>-norm,
+	Define <m> \| \cdot \|_p : \C^{m \times n} \rightarrow \R </m> by
+	<me>
+	  \| A \|_p = 
+	  \max_{x \neq 0}
+	  \frac{\| A x \|_p}{\| x \|_p}
+	  =
+	  \max_{\| x \|_p = 1}
+	  \| A x \|_p.
+	</me>
+      </p>
+      \end{definition}
+      
+      <remark>
+	<p>
+	  The matrix <m>p</m>-norms with <m> p \in \{ 1, 2, \infty \} </m> will play an important
+	  role in our course, as will the Frobenius norm.  As the course unfolds, we will realize that the matrix
+	  2-norm is difficult to compute in practice while the 1-norm, <m> \infty
+	  </m>-norm, and Frobenius norms are straightforward and relatlively cheap
+	  to compute (for an <m> m \times n </m> matrix, computing these costs
+	  <m> O( mn ) </m>
+	  computation).
+	</p>
+      </remark>
+      
+      <p>
+	The following exercise shows how to practically compute the
+	matrix 1-norm and <m> \infty </m>-norm:
+      </p>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Let <m> A \in \C^{m \times n} </m> and partition
+	    <m> A = \left( \begin{array}{c | c | c | c}
+	    a_0 \amp a_1 \amp \cdots \amp a_{n-1}
+	    \end{array}
+	    \right) </m>.
+	    Show that 
+	    <me>
+	      \| A \|_1 = 
+	      \max_{0 \leq j \lt n}
+	      \| a_j \|_1.
+	    </me>
+	  </p>
+	</statement>
+	<hint>
+	  <p>
+	    Prove it for the real valued case first. 
+	  </p>
+	</hint>
+	<solution>
+	  <p>
+	    Let <m> J </m> be chosen so that
+	    <m> \max_{0 \leq j \lt n}
+	    \| a_j \|_1= \| a_{J} \|_1 </m>.
+	    Then
+	    <me>
+	      \begin{array}{rcl}
+	      \max_{\|x\|_1 = 1}
+	      \| A x \|_1 
+	      \amp=\amp
+	      \max_{\|x\|_1 = 1}
+	      \left\|
+	      \left( \begin{array}{c | c | c | c}
+	      a_0 \amp a_1 \amp \cdots \amp a_{n-1}
+	      \end{array}
+	      \right) 
+	      \left( \begin{array}{c}
+	      \chi_0 \\
+	      \chi_1 \\
+	      \vdots \\
+	      \chi_{n-1}
+	      \end{array}
+	      \right)
+	      \right\|_1 \\
+	      \amp=\amp
+	      \max_{\|x\|_1 = 1}
+	      \|
+	      \chi_0 a_0 + \chi_1 a_1 + \cdots + \chi_{n-1} a_{n-1}
+	      \|_1 \\
+	      \amp \leq \amp 
+	      \max_{\|x\|_1 = 1}
+	      \left(
+	      \|
+	      \chi_0 a_0 \|_1 + \| \chi_1 a_1 \|_1 + \cdots + \| \chi_{n-1} a_{n-1}
+	      \|_1 \right)
+	      \\
+	      \amp = \amp
+	      \max_{\|x\|_1 = 1}
+	      \left(
+	      \vert \chi_0 \vert
+	      \|  a_0 \|_1 + \vert \chi_1 \vert \| a_1 \|_1 + \cdots + 
+	      \vert \chi_{n-1} \vert \|  a_{n-1} \|_1 \right) \\
+	      \amp \leq \amp
+	      \max_{\|x\|_1 = 1}
+	      \left(
+	      \vert \chi_0 \vert
+	      \|  a_{J} \|_1 + \vert \chi_1 \vert \| a_{J} \|_1 + \cdots + 
+	      \vert \chi_{n-1} \vert \|  a_{J} \|_1 \right) \\
+	      \amp = \amp
+	      \max_{\|x\|_1 = 1}
+	      \left(
+	      \vert \chi_0 \vert
+	      + \vert \chi_1 \vert + \cdots + 
+	      \vert \chi_{n-1} \vert \right) \|  a_{J} \|_1  \\
+	      \amp=\amp 
+	      \| a_{J} \|_1.
+	      \end{array}
+	    </me>
+	    Also,
+	    <me>
+	      \begin{array}{rcl}
+	      \| a_{J} \|_1
+	      =
+	      \| A e_{J} \|_1
+	      \leq
+	      \max_{\|x\|_1 = 1}
+	      \| A x \|_1 .
+	      \end{array}
+	    </me>
+	    Hence
+	    <me>
+	      \| a_{J} \|_1
+	      \leq
+	      \max_{\|x\|_1 = 1}
+	      \| A x \|_1 
+	      \leq
+	      \| a_{J} \|_1
+	    </me>
+	    which implies that
+	    <me>
+	      \max_{\|x\|_1 = 1}
+	      \| A x \|_1 
+	      =
+	      \| a_{J} \|_1
+	      =
+	      \max_{0 \leq j \lt n}
+	      \| a_j \|.
+	    </me>
+	  </p>
+	</solution>
+      </exercise>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Let <m> A \in \C^{m \times n} </m> and partition
+	    <m> A = \left( \begin{array}{c}
+	    \widehat a_0^T \\ \hline
+	    \widehat a_1^T \\ \hline
+	    \vdots \\ \hline
+	    \widehat a_{m-1}^T
+	    \end{array}
+	    \right) </m>.
+	    Show that 
+	    <me>
+	      \| A \|_\infty = 
+	      \max_{0 \leq i \lt m}
+	      \| \widehat a_i \|_1
+	      = 
+	      \max_{0 \leq i \lt m}
+	      \left( 
+	      \vert \alpha_{i,0} \vert
+	      +
+	      \vert \alpha_{i,1} \vert
+	      + 
+	      \cdots
+	      +
+	      \vert \alpha_{i,n-1} \vert
+	      \right)
+	    </me>
+	  </p>
+	  <p>
+	    Notice  that in this exercise <m> \widehat a_i </m> is really 
+	    <m> ( \widehat a_i^T )^T </m> since <m> \widehat a_i^T </m> is the label 
+	    for the <m> i </m>th row of matrix <m> A </m>. 
+	  </p>
+	  
+	</statement>
+	<hint>
+	  <p>
+	    Prove it for the real valued case first. 
+	  </p>
+	</hint>
+	<solution>
+	  <p>
+	    Partition <m> A = 
+	    \left( \begin{array}{c}
+	    \widehat a_0^T \\ \hline
+	    \widehat a_1^T \\ \hline
+	    \vdots \\ \hline
+	    \widehat a_{m-1}^T 
+	    \end{array} \right) 
+	    </m>.  Then
+	    <me>
+	      \begin{array}{rcl}
+	      \| A \|_\infty \amp=\amp \max_{\| x \|_\infty = 1} \| A x \|_\infty 
+	      =
+	      \max_{\| x \|_\infty = 1} \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^T \\ \hline
+	      \widehat a_1^T \\ \hline
+	      \vdots \\ \hline
+	      \widehat a_{m-1}^T 
+	      \end{array} \right) x
+	      \right\|_\infty 
+	      =
+	      \max_{\| x \|_\infty = 1} \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^T x \\ \hline
+	      \widehat a_1^T x \\ \hline
+	      \vdots \\ \hline
+	      \widehat a_{m-1}^T x
+	      \end{array} \right) 
+	      \right\|_\infty \\
+	      \amp=\amp
+	      \max_{\| x \|_\infty = 1} \left(
+	      \max_i \vert a_i^T x \vert \right) 
+	      =
+	      \max_{\| x \|_\infty = 1} 
+	      \max_i \vert \sum_{p=0}^{n-1} \alpha_{i,p} \chi_p \vert 
+	      \leq
+	      \max_{\| x \|_\infty = 1} 
+	      \max_i \sum_{p=0}^{n-1} \vert \alpha_{i,p} \chi_p \vert \\
+	      \amp=\amp
+	      \max_{\| x \|_\infty = 1} 
+	      \max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert \vert \chi_p \vert
+	      ) 
+	      \leq
+	      \max_{\| x \|_\infty = 1} 
+	      \max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert ( \max_k \vert
+	      \chi_k \vert )
+	      ) 
+	      \leq
+	      \max_{\| x \|_\infty = 1} 
+	      \max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert \| x \|_\infty ) \\
+	      \amp=\amp
+	      \max_i \sum_{p=0}^{n-1} ( \vert \alpha_{i,p} \vert 
+	      = \| \widehat a_i \|_1
+	      \end{array}
+	    </me>
+	    so that <m> \| A \|_\infty \leq \max_i \| \widehat a_i \|_1 </m>.
+	  </p>
+	  
+	  <p>
+	    We also want to show that 
+	    <m> \| A \|_\infty \geq \max_i \| \widehat a_i \|_1</m>.
+	    Let <m> k </m> be such that <m>  \max_i \| \widehat a_i \|_1 = \| \widehat
+	    a_k\|_1 </m> and pick <m> y = 
+	    \left( \begin{array}{c}
+	    \psi_0 \\
+	    \psi_1 \\
+	    \vdots \\
+	    \psi_{n-1}
+	    \end{array}
+	    \right) </m> so that <m> \widehat a_k^T y  = 
+	    \vert \alpha_{k,0} \vert + \vert \alpha_{k,1} \vert + \cdots + \vert
+	    \alpha_{k,n-1} \vert = \| \widehat a_k \|_1 </m>.
+	    (This is a matter of picking <m> \psi_i </m> so that <m> \vert \psi_i \vert =1
+	    </m> and <m> \psi_i \alpha_{k,i} = \vert \alpha_{k,i} \vert </m>.)
+	    Then
+	    <me>
+	      \begin{array}{rcl}
+	      \| A \|_\infty = \max_{\|x\|_1=1} \| A x\|_\infty
+	      \amp=\amp
+	      \max_{\|x\|_1=1} 
+	      \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^T \\ \hline
+	      \widehat a_1^T \\ \hline
+	      \vdots \\ \hline
+	      \widehat a_{m-1}^T 
+	      \end{array} \right) x
+	      \right\|_\infty 
+	      \geq
+	      \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^T \\ \hline
+	      \widehat a_1^T \\ \hline
+	      \vdots \\ \hline
+	      \widehat a_{m-1}^T 
+	      \end{array} \right)  y
+	      \right\|_\infty \\
+	      \amp
+	      = \amp
+	      \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^T y\\ \hline
+	      \widehat a_1^T y\\ \hline
+	      \vdots \\ \hline
+	      \widehat a_{m-1}^T y
+	      \end{array} \right)  
+	      \right\|_\infty
+	      \geq \vert \widehat a_k^T y \vert 
+	      =
+	      \widehat a_k^T y 
+	      =\| \widehat a_k \|_1. =  
+	      \max_i \| \widehat a_i \|_1
+	      \end{array}
+	    </me>
+	  </p>
+	</solution>
+      </exercise>
+      
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Let <m> y \in \C^m </m> and <m> x \in \C^n </m>.  
+	  </p>
+	  <p>
+	    <m> \| y x^H \|_2 = \| y \|_2 \| x \|_2 </m>. 
+	  </p>
+	  <p>
+	    ALWAYS/SOMETIMES/NEVER
+	  </p>
+	</statement>
+	<hint>
+	  <p>
+	    Square both sides.  Then prove that 
+	    <m> \| y x^H \|_2 \geq \| y \|_2 \| x \|_2 </m>
+	    and that there exists a vector <m> z </m>
+	    so that
+	    <m> \frac{\| y x^H z \|_2}{\| z \|_2} -\| y \|_2 \| x \|_2 </m>.
+	  </p>
+	</hint>
+	<answer>
+	  <p>
+	    ALWAYS
+	  </p>
+	  <p>
+	    Now prove it!
+	  </p>
+	</answer>
+	<solution>
+	  <p>
+	    W.l.o.g. assume that  <m> x \neq 0 </m>.
+	  </p>
+	  <p>
+	    We know by the Hoelder inequality that <m> \vert x^H z \vert \leq \| x
+	    \|_2 \| z \|_2 </m>.   Hence
+	    <me>
+	      \| y x^H \|_2 = \max_{\| z \|_2 = 1 } \| y x^H z \|_2 
+	      = \max_{\| z \|_2 =1 }\vert x^H z \vert \| y  \|_2
+	      \leq \max_{\| z \|_2 =1 } \| x \|_2 \| z \|_2 \|y \|_2 = \| x \|_2 \|y
+	      \|_2 .
+	    </me>
+	    But also
+	    <me> \| y x^H \|_2 = \max_{ z \neq 0 } \| y x^H z \|_2 / \| z \|_2 
+	    \geq \| y x^H x \|_2 / \| x \|_2 = \| y \|_2 \| x \|_2.
+	    </me>
+	    Hence
+	    <me>
+	      \| y x^H \|_2 = \| y \|_2 \| x \|_2.
+	    </me>
+	  </p>
+	</solution>
+      </exercise>
+      
+      <remark>
+	<p>
+	  While <m> \| \cdot \|_2 </m> is a very important matrix norm, it is in practice
+	  often difficult to compute.  The matrix norms, <m> \| \cdot \|_F </m>, <m> \| \cdot
+	  \|_1 </m>, and
+	  <m> \| \cdot \|_\infty </m> are more easily computed and hence more
+	  practical in many instances.
+	</p>
+      </remark>
+      
+    </subsection>
+    
+    <subsection xml:id="section-norms-matrix-equivalence">
+      <title> Equivalence of matrix norms </title>
+      
+      <p>
+	We saw that vector norms are equivalent in the sense that if a
+	vector is "small" in one norm, it is "small" in all other
+	norms, and if it is "large" in one norm, it is "large" in all
+	other norms.  The same is true for matrix norms.
+      </p>
+      
+      <theorem>
+	<title> Equivalence of matrix norms </title>
+	<p>
+	  Let <m> \| \cdot \|: \C^{m \times n} \rightarrow \R </m> and <m> \vert \vert 
+	  \vert \cdot \vert \vert \vert: \C^{m \times n} \rightarrow \R </m> both be 
+	  matrix norms. 
+	  Then there exist positive scalars <m> \sigma </m> and <m> \tau </m>
+	  such that for all <m> A \in \C^{m \times n} </m>
+	  <me>
+	    \sigma \| A \| \leq \vert \vert \vert A \vert \vert \vert 
+	    \leq \tau \| A \|. 
+	  </me>
+	</p>
+      </theorem>
+      
+      <proof>
+	<p>
+	  The proof again build on the fact that the supremum
+	  over a compact set is attached and can be replaced by
+	  the maximum.
+	</p>
+	<p>
+	  We will prove that there exists a <m> \tau </m> such that for all <m>
+	  A \in \C^{m \times n} </m>
+	  <me>
+	    \vert \vert \vert A \vert \vert \vert 
+	    \leq \tau \| A \|
+	  </me>
+	  leaving the rest of the proof to the reader. 
+	</p>
+	<p>
+	  Let <m> A \in \C^{m \times n} </m> be an arbitary matrix.  W.l.o.g. assume that <m> A 
+	  \neq 0 </m> (the zero matrix). 
+	  Then 
+	</p>
+	<me>
+	  \begin{array}{l}
+	  \vert \vert \vert A \vert \vert \vert \\
+	  ~~~ = ~~~~ \lt {\rm algebra} \gt \\
+	  \frac{\vert \vert \vert A \vert \vert \vert}{\| A \|} \| A 
+	  \| \\
+	  ~~~ \le ~~~~ \lt  {\rm algebra} \gt \\ 
+	  \left( \sup_{Z \neq 0} \frac{\vert \vert \vert Z \vert \vert 
+	  \vert}{\| Z \|} \right) \| A \| \\
+	  ~~~ = ~~~~ \lt  {\rm homogenuity} \gt \\
+	  \left( \sup_{Z \neq 0} \vert \vert \vert \frac{Z}{\| Z \|} \vert \vert 
+	  \vert \right) \| A \| \\	  
+	  ~~~ = ~~~~ \lt  {\rm change~of~variables:~} B = Z / \| Z \| \gt \\
+	  \left( \sup_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+	  \vert \right) \| A \| \\
+	  ~~~ = ~~~~ \lt {\rm the~set~}\| B \| = 1 {\rm ~is~compact} \gt \\
+	  \left( \max_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+	  \vert\right) \| A \|
+	  \end{array}
+	</me>
+	<p>
+	  The desired <m> \tau  </m> can now be chosen to equal 
+	  <m> \max_{\| B \| = 1} \vert \vert \vert B \vert \vert 
+	  \vert </m>. 
+	</p>
+      </proof>
+      
+      <remark>
+	<p>
+	  The bottom line is that, modulo a constant, if a matrix is 
+	  "small" in one norm, it is "small" in any other norm. 
+	</p>
+      </remark>
+      
+    </subsection>
+    
+    
+    <subsection xml:id="sections-norms-matrix-sub-multiplicative">
+      
+      <title> Sub-multiplicative norms </title>
+      
+      <definition>
+	<p>
+	  A matrix norm <m> \| \cdot \|: \C^{m \times n} </m> is said to be a
+	  consistent matrix norm is it is defined for all <m> m </m> and <m> n
+	  </m>.
+	</p>
+      </definition>
+      
+      <definition>
+	<p>
+	  A consistent matrix norm <m> \| \cdot \|: \C^{m \times n} \rightarrow \R </m> is said to 
+	  be sub-multiplicative if it also satisfies
+	  <me>
+	    \| A B \| \leq \| A \| \| B \| .
+	  </me>
+	</p>
+      </definition>
+      
+      <theorem>
+	<p>
+	  Let <m> \| \cdot \|: \C^n \rightarrow \R </m> be a vector norm and
+	  given any matrix <m> A \in \C^{m \times n} </m> 
+	  define the corresponding induced matrix norm as
+	  <me>
+	    \| A \| = 
+	    \max_{ x \neq 0 }
+	    \frac{\| A x \|}
+	    {\| x \|} =
+	    \max_{\| x \|=1}
+	    \| A x \|.
+	  </me>
+	  Then for any <m> A \in \C^{m \times k} </m> and <m> B \in \C^{k \times n} </m>
+	  the inequality 
+	  <m> \| A B \| \leq \| A \| \| B \| </m> holds.
+	</p>
+      </theorem>
+      
+      <p>
+	In other words, induced matrix norms are sub-multiplicative.
+	To prove this theorem, it helps to first prove a simpler result:
+      </p>
+      
+      <lemma>
+	<p>
+	  Let <m> \| \cdot \|: \C^n \rightarrow \R </m> be a vector norm and
+	  given any matrix <m> A \in \C^{m \times n} </m> 
+	  define the corresponding induced matrix norm as
+	  <me>
+	    \| A \| = 
+	    \max_{x \neq 0}
+	    \frac{\| A x \|}{\| x \|}
+	    =
+	    \max_{\| x \|=1}
+	    \| A x \|
+	    .
+	  </me>
+	  Then for any <m> A \in \C^{m \times n} </m> and <m> x \in \C^{ n} </m>
+	  the inequality 
+	  <m> \| A x \| \leq \| A \| \| x \| </m> holds.
+	</p>
+      </lemma>
+      
+      <proof>
+	<p>
+	  If <m> x = 0 </m>, the result obviously holds since then <m> \| A x \| =
+	  0 </m> and <m> \| x \| = 0 </m>.  Let <m> x \neq 0 </m>.  Then
+	  <me>
+	    \| A \|
+	    =
+	    \max_{x \neq 0}
+	    \frac{\| A  x \|}
+	    {\|  x \|}
+	    \geq
+	    \frac{\| A  x \|}
+	    {\|  x \|}.
+	  </me>
+	  Rearranging this yields <m> \| A x \| \leq \| A \| \| x \|
+	  </m>.
+	</p>
+      </proof>
+      <p>
+	We can now prove the theorem:
+      </p>
+      <proof>
+	<p>
+	  <me>
+	    \begin{array}{l}
+	    \| A B \| \\
+	    ~~~ = ~~~~ \lt {\rm definitition~of~induced~matrix~norm} \gt\\
+	    \max_{\| x \| = 1}
+	    \| A  B x \| \\
+	    ~~~ = ~~~~ \lt {\rm associativity} \gt \\
+	    \max_{\| x \|=1}
+	    \| A  ( B x ) \| \\
+	    ~~~ \leq ~~~~ \lt {\rm lemma} \gt \\
+	    \max_{\| x \|=1}
+	    \| A \| \|  B x  \| \\
+	    ~~~ \leq ~~~~ \lt  {\rm lemma} \gt \\
+	    \max_{\| x \|=1}
+	    \| A \| \|  B \| \| x \|  \\
+	    ~~~ = ~~~~ \lt \| x \| = 1 \gt \\
+	    \| A \| \| B \|}
+	    .
+	    \end{array}
+	  </me>
+	</p>
+      </proof>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Show that <m> \| A x \|_\mu \leq \| A \|_{\mu,\nu} \| x \|_\nu </m>.
+	  </p>
+	</statement>
+	<solution>
+	  <p>
+	    W.l.o.g. assume that <m> x \ne 0 </m>.
+	    <me>
+	      \| A \|_{\mu,\nu} = \max_{y \neq 0} \frac{\| A y \|_\mu}{\| y \|_\nu}
+	      \geq \frac{\| A x \|_\mu}{\| x \|_\nu} .
+	    </me> 
+	    Rearranging this establishes the result.
+	  </p>
+	</solution>
+      </exercise>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Show that <m> \| A B \|_\mu \leq \| A \|_{\mu,\nu} \| B \|_\nu </m>.
+	  </p>
+	</statement>
+	<solution>
+	  <p>
+	    <me>
+	      \| \|_{\mu,\nu} = \max_{\| x \|_\nu = 1} \| A B x \|_\mu
+	      \leq \max_{\| x \|_\nu = 1} \| A \|_{\mu,\nu} \| B x \|_\nu
+	      = \| A \|_,\nu} \ma| x \|_\nu = 1} \| B x \|_\nu
+	      = \| A \|_{\mu,\nu} \| B \|_\nu
+	    </me>
+	  </p>
+	</solution>
+      </exercise>
+      
+      <exercise>
+	<statement>
+	  <p>
+	    Show that the Frobenius norm, <m> \| \cdot \|_F </m>, is sub-multiplicative.
+	  </p>
+	</statement>
+	<solution>
+	  <p>
+	    <me>
+	      \begin{array}{l}
+	      \| A B \|_F^2 \\
+	      ~~~ = ~~~~ \lt \gt \\
+	      \left\| 
+	      \left( \begin{array}{c}
+	      \widehat a_0^H \\
+	      \widehat a_1^H \\
+	      \vdots \\
+	      \widehat a_{m-1}^H 
+	      \end{array}
+	      \right)
+	      \left( \begin{array}{c | c | c | c}
+	      b_0 \amp  b_1 \amp  \cdots \amp  b_{n-1}
+	      \end{array}
+	      \right)
+	      \right\|_F^2 \\
+	      ~~~ = ~~~~ \lt \gt \\
+	      \left\|  
+	      \left( \begin{array}{c | c | c | c}
+	      \widehat a_0^H b_0 \amp   \widehat a_0^H b_1 \amp   \cdots \amp  \widehat a_0^H
+	      b_{n-1}  \\ \hline
+	      \widehat a_0^H b_0 \amp   \widehat a_0^H b_1 \amp   \cdots \amp  \widehat a_0^H
+	      b_{n-1}  \\ \hline
+	      \vdots \amp  \vdots \amp  \amp  \vdots \\ \hline
+	      \widehat a_{m-1}^H b_0 \amp   \widehat a_{m-1}^H b_1 \amp   \cdots
+	      \amp  \widehat a_{m-1}^H
+	      b_{n-1}  
+	      \end{array}
+	      \right)
+	      \right\|_F^2  \\
+	      ~~~ = ~~~~ \lt \gt \\
+	      \sum_i \sum_j \vert \widehat a_i^H b_j \vert^2 \\
+	      \amp \leq\amp  
+	      \sum_i \sum_j  \| \widehat a_i \|_2^2 \| b_j \|_2^2 ~~~~~\mbox{(Cauchy-Schwartz)}\\
+	      \amp  = \amp 
+	      \left( \sum_i  \| \widehat a_i \|_2^2 \right) \left( \sum_j \| b_j
+	      \|^2  \right)
+	      \end{array}
+	      </me>}
+	  </p>
+	</solution>
+      </exercise>
+      
+    </subsection>
+    
+  </section>
+
+  <section xml:id="norms-application">
+
+    <title> An Application </title>
+
+    <subsection xml:id="norms-application-linear-system-conditioning">
+
+      <title> Conditioning of a linear system </title>
+      <p>
+	A question we will run into later in the course asks how accurate we
+	can expect the solution of a linear system to be if the right-hand side
+	of the system has error in it.
+      </p>
+      <p>
+Formally, this can be stated as follows:
+      </p>
+      <p>
+	We wish to solve <m> A x = b </m>, where <m> A \in \C^{m \times m} </m> but the right-hand side has been
+	perturbed by a small vector so that it becomes <m> b + \delta\!b</m>.
+      </p>
+      <remark>
+	<p>
+  Notice how that <m> \delta </m> touches the <m> b </m>.  This is meant to
+convey that this is a symbol that represents a vector rather than the
+vector <m> b </m> that is multiplied by a scalar <m> \delta </m>.
+	</p>
+      </remark>
+      <p>
+The question now is how a relative error in <m> b </m> propogates into a
+potential error in the solution <m> x </m>.
+      </p>
+      <p>
+This is summarized as follows:
+<me>
+\begin{array}{r c l l}
+A x \amp = \amp  b \amp  {\rm exact~equation} \\
+A ( x + \delta\!x ) \amp  = \amp   b + \delta\!b ~~~~~~~ \amp  {\rm Perturbed~equation} \\
+\end{array}
+</me>
+We would like to determine a formula, <m> \kappa( A, b, \delta\!b ) </m>, 
+that gives us a bound on how much a relative
+error in <m> b </m> is potentially amplified into an error in the solution
+<m> x </m>:
+<me>
+\frac{\| \delta\!x \|}{\| x \|}
+\leq 
+\kappa( A, b, \delta\!b )
+\frac{\| \delta\!b \|}{\| b \|}.
+</me> 
+We assume that <m> A </m> has an inverse since otherwise, there may be
+no solution or there may be an infinite number of solutions.
+To find an expression for <m> \kappa( A, b, \delta\!b ) </m>, we 
+notice that
+<me>
+\begin{array}{r c l}  
+A x + A \delta\!x  \amp  = \amp   b + \delta\!b  \\   
+A x \phantom{+ A \delta\!x } \amp  = \amp  b \hspace{0.25in} -\\ \hline 
+A \delta\!x  \amp  = \amp   \phantom{b} \phantom{+} \delta\!b
+\end{array}
+</me> 
+and from this
+<me>
+\begin{array}{r c l}
+A x \amp  = \amp  b \\
+\delta\!x  \amp  = \amp   A^{-1} \delta\!b.
+\end{array}
+</me>
+If we now use a vector norm <m> \| \cdot \| </m> and induced matrix norm <m>
+\| \cdot \| </m>, then
+<me>
+\begin{array}{r c l} 
+\| b \| \amp  = \amp  \| A x \| \leq \| A \| \| x \| \\
+\| \delta\!x \| \amp  = \amp  \| A^{-1} \delta\!b \| \leq \| A^{-1} \| \|
+\delta\!b \| 
+\end{array}
+</me>
+since induced matrix norms are sub-multiplicative.
+      </p>
+      <p>
+From this we conclude that
+<me>
+\begin{array}{r c l} 
+\frac{1}{\| x \|} \amp  \leq \amp  \| A \| \frac{1}{\| b \|} \\
+\| \delta\!x \| \amp  \leq \amp  \| A^{-1} \| \|
+\delta\!b \|. 
+\end{array}
+</me>
+so that 
+<me>
+\frac{\| \delta\!x \|}{\| x \|}
+\leq 
+\| A \| \| A^{-1} \|
+\frac{\| \delta\!b \|}{\| b \|}.
+</me>
+Thus, the desired expression <m> \kappa( A, b, \delta\!b ) </m> doesn't
+depend on anything but the matrix <m> A </m>:
+<me>
+\frac{\| \delta\!x \|}{\| x \|}
+\leq 
+\begin{array}[t]{c}
+\underbrace{
+\| A \| \| A^{-1} \|
+} \\
+\kappa( A ) 
+\end{array}
+\frac{\| \delta\!b \|}{\| b \|}.
+</me>
+The number <m> \kappa( A ) = \| A \| \| A^{-1} \| </m> the called the <i> condition
+  number </i> of matrix <m> A </m>.
+      </p>
+      <p>
+A question becomes whether this is a pessimistic result or whether
+there are examples of <m> b </m> and <m> \delta\!b </m> for which the 
+relative error in <m> b </m> is amplified by exactly <m> \kappa( A ) </m>.  The
+answer is, unfortunately, "yes!", as we will show next.
+      </p>
+      <p>
+Notice that 
+<ul>
+  <li>
+    <p>
+There is an <m> \widehat x </m> for which
+<me>
+\| A \| = \max_{\| x \| = 1} \| A x \| = \| A \widehat x \|, 
+</me>
+namely the <m> x </m> for which the maximum is attained.
+Pick <m> \widehat b = A \widehat x </m>.
+    </p>
+  </li>
+  <li>
+    <p>
+There is an <m> \widehat {\delta\!b} </m> for which
+<me>
+\| A^{-1} \| = \max_{\| x \| \neq 0} \frac{\| A^{-1} x \|}{\| x \|} 
+=
+\frac{\| A^{-1} \widehat{\delta\!b} \|}{\| \widehat{\delta\!b} \|}, 
+</me>
+again, the <m> x </m> for which the maximum is attained.
+    </p>
+  </li>
+</ul>
+It is when solving the perturbed system
+<me>
+A ( x + \delta\!x) = \widehat b + \widehat{ \delta\!b} 
+</me>
+that the maximal magnification by <m> \kappa( A ) </m> is observed.
+      </p>
+
+      <exercise>
+	<statement>
+	  <p>
+Let <m> \| \cdot \| </m> be a matrix norm induced by the <m> \| \cdot \| </m> 
+vector norm.  Show that  
+<m> \kappa( A ) = \| A \| \| A^{-1} \| \geq 1 </m>.  
+	  </p>
+	</statement>
+	<solution>
+	  <p>
+<me>
+\| I \| = \| A A^{-1} \| \leq \| A \| \| A^{-1} \|.  
+</me> 
+But 
+<me>
+\| I \| = \max_{\| x \|=1} \| I x \| = \max_{\| x \|} \| x \| = 1.  
+</me> 
+Hence <m> 1 \leq \| A \| \| A^{-1} \| </m>.  
+	  </p>
+	</solution>
+      </exercise>
+
+<p> 
+This last exercise shows that there will always be choices for <m> b </m>
+and <m> \delta\!b </m> for which the relative error is at best directly
+translated into an equal relative error in the solution (if <m> \kappa(
+A ) = 1 </m>).
+</p>
+
+</subsection>
+</section>
+
+<section xml:id="norms-enrichments">
+
+  <title> Enrichments </title>
+
+  <subsection xml:id="norms-enrichments-computing-2-norm">
+
+    <title> Practical computation of the vector 2-norm </title>
+
+    <p>
+Consider the computation <m> \gamma = \sqrt{ \alpha^2 + \beta^2} </m> where <m>
+\alpha, \beta \in \R</m>.
+When computing this with floating point numbers, a fundamental problem
+is that the intermediate values <m> \alpha^2 </m> and <m> \beta^2 </m> may overflow
+(become larger than the largest number that can be stored)
+or underflow 
+(become smaller than the smallest positive number that can be stored),
+even if the resulting <m> \gamma </m> itself does not overflow or
+underflow.
+    </p>
+    <p>
+The solution is to first determine the largest value, 
+<m> \mu = \max( \vert \alpha \vert, \vert \beta \vert ) </m>
+and then compute 
+<me> 
+\gamma = \mu \sqrt{ \left( \frac{\alpha}{\mu} \right)^2 + \left(
+    \frac{\beta}{\mu} \right)^2}
+</me>
+instead.   A careful analysis shows that if <m> \gamma </m> does not
+overflow, neither do any of the intermediate values encountered during
+it computation.  While one of the terms <m> \left( \frac{\alpha}{\mu} \right)^2 </m> or 
+<m> \left( \frac{\beta}{\mu} \right)^2 </m> may underflow, the other one equals one and
+hence the overall result does not underflow.  A complete discussion of
+all the intracacies go beyond this note.
+    </p>
+    <p>
+This insight generalizes to the computation of <m> \| x \|_2 </m> where <m>
+x \in \Cn </m>.  Rather than computing it as
+<me>
+\| x \|_2 = \sqrt{ \vert \chi_0 \vert^2 + \vert \chi_1 \vert^2 +
+  \cdots + \vert \chi_{n-1} \vert^2 }
+</me>
+and risk overflow or underflow, 
+instead the following computation is used:
+<me>
+  \begin{array}{l}
+\mu \amp =\amp  \| x \|_\infty \\
+\| x \|_2 \amp =\amp  \mu \sqrt{ \left( \frac{\vert \chi_0 \vert}{\mu} \right)^2
+  + \left( \frac{\vert \chi_1 \vert}{\mu} \right)^2 +
+  \cdots + \left( \frac{\vert \chi_{n-1} \vert}{\mu} \right)^2 }.
+  \end{array}
+</me>
+    </p>
+    
+  </subsection>
+  
+</section>
+
+
+  <section xml:id="section-norms-wrapup">
+    <title>Wrap Up</title>
+    
+    <subsection>      
+      <title>Additional Homework</title>
+      
+      <exercises>
+	<exercise>
+	  <statement>
+	    <p>
+	      Let <m> \| \cdot \|: \C^n \rightarrow \R </m> and let <m>
+	      A \in \C^{m \times n} </m> be a matrix.
+	      Define <m> \vert\vert\vert \cdot \vert\vert\vert: \C^n \rightarrow \R </m> by
+	      <me>
+		\vert\vert\vert x \vert\vert\vert = \vert\vert\vert A x \vert\vert\vert.
+	      </me>
+	      <m> \vert\vert\vert \cdot \vert\vert\vert </m> is a vector norm. 
+	    </p>
+	    <p>
+	      ALWAYS/SOMETIMES/NEVER
+	    </p>
+	  </statement>
+	  <hint>
+	    <p>
+	      To prove "<m> \vert\vert\vert \cdot \vert\vert\vert </m>
+	      is a vector norm." is SOMETIMES true, it suffices to 
+	      given an example of <m> A </m> for which the statement 
+	      is true, and an example of <m> A </m> for which it is 
+	      not true. 
+	    </p>
+	  </hint>
+	  <answer>
+	    <p>
+	      SOMETIMES
+	    </p>
+	  </answer>
+	  <solution>
+	    <p>
+	      An example for which it is true: <m> A = 0 </m> (the 
+	      zero matrix).  For this matrix, it is easy to show that <m>\vert 
+	      \vert \vert \cdot \vert \vert \vert</m> is not positive 
+	      definite. 
+	    </p>
+	    
+	    <p>
+	      An example for which it is true: <m> A = I </m> (the 
+	      identity matrix).  For this matrix, <m>\vert 
+	      \vert \vert \cdot \vert \vert \vert</m> is simply <m>
+	      \| \cdot \| </m>, which is assumed to be a norm.
+	    </p>
+	    
+	    <p>
+	      What would fix this problem so that the answer is
+	      ALWAYS?
+	    </p>
+	    
+	    <p>
+	      If <m> A </m> has linearly independent columns, then
+	      <m> \vert\vert\vert \cdot \vert\vert\vert </m> can be
+	      shown to be a norm.  Try it!
+	    </p>
+	    
+	    <p>
+	      Why is this a nice problem?  It test your
+	      understanding in a number of ways:
+	      <ul>
+		<li>
+		  Do you understand what a norm is?
+		</li>
+		<li>
+		  Do you understand that when the answer is
+		  SOMETIMES, you need to provide an example of when
+		  it is true and an example of when it is false?
+		</li>
+		<li>
+		  Is your linear algebra background strong enough to
+		  survive this course?  (If you don't know what a
+		  matrix with linearly independent columns is,
+		  you need to go back and review your introductory
+		  linear algebra understanding.  You can do so by
+		  reviewing our undergraduate course
+		  <a href="https://www.edx.org/course/linear-algebra-foundations-to-frontiers"> "Linear
+		  Algebra: Foundations to Frontiers" (LAFF)</a>.
+		</li>
+	      </ul>
+	    </p>
+	    
+	  </solution>
+	</exercise>
+	
+	<exercise>
+	  <statement>
+	    <p>
+	      Given <m> A \in \C^{m \times n} </m> define
+	      <m> \| A \| = \max_{i=0}^{m-1}\max_{j=0}^{n-1} \vert
+	      \alpha_{i,j} \vert </m>.
+	      This function is a matrix norm.
+	    </p>
+	    <p>
+	      TRUE/FALSE
+	    </p>
+	  </statement>
+	  <answer>
+	    <p>
+	      TRUE>
+	    </p>
+	    <p>
+	      Now prove it!
+	    </p>
+	  </answer>
+	  <solution>
+	    <p>
+	      Like in the solution for Homework ???,
+	      one way to  answer this is to realize that if <m> A = \left( \begin{array}{c | c | c
+	      | c} a_0 \amp a_1 \amp \cdots \amp a_{n-1} \end{array} \right) </m>
+	      then
+	      <me>
+		\begin{array}{l}
+		\| A \| \\
+		~~~=~~~~ \lt {\rm definition} \gt \\ 
+		\sqrt{
+		\max_{i=0}^{m-1} \max_{j=0}^{n-1} 
+		\vert \alpha_{i,j}  \vert
+		} \\
+		~~~=~~~~ \lt {\rm commutivity~of~max} \gt \\ 
+		\sqrt{
+		\max_{j=0}^{n-1} \max_{i=0}^{m-1} 
+		\vert \alpha_{i,j}  \vert
+		} \\
+		~~~=~~~~ \lt {\rm definition~of~vector~1-norm} \gt \\ 
+		\sqrt{
+		\max_{j=0}^{n-1} \| a_j \|_1
+		} \\
+		~~~=~~~~ \lt {\rm definition~of~vector~1-norm} \gt \\ 
+		\sqrt{
+		\left\|
+		\left( \begin{array}{c}
+		a_0 \\ 
+		a_1 \\ 
+		\vdots \\ 
+		a_{n-1}
+		\end{array}
+		\right)
+		\right\|_1
+		}.
+		\end{array}
+	      </me>
+	      In other words, it equals the vector 1-norm of the vector that is
+	      created by stacking the columns of <m> A </m> on top of each other.
+	      The fact that the Frobenius norm is a norm then comes from realizing
+	      this connection and exploiting it.
+	    </p>
+	    <p>
+	      Alternatively, just grind through the three conditions!
+	    </p>
+	  </solution>
+	</exercise>
+	
+      </exercises>
+    </subsection>
+    
+  </section>
+  
+</chapter>
